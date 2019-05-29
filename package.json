@@ -7,14 +7,25 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "html-minifier": "^4.0.0",
-    "http-server": "^0.11.1"
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "tachyons": "^4.11.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1",
+    "webpack-merge": "^4.2.1"
+  },
+  "config": {
+    "webpack_args": " --config webpack.config.js --display-error-details"
   },
   "scripts": {
-    "build": "$(yarn bin)/html-minifier -c config/html-minifier.conf --input-dir=src/html --output-dir=site/",
-    "serve": "yarn build && $(yarn bin)/http-server site",
-    "upload": "aws s3 sync --cache-control=\"max-age=3600\" --profile=personal site/ s3://timeline-lang.com",
-    "invalidate": "aws cloudfront create-invalidation --profile=personal --distribution-id=E8T2XNPHWMAQO --paths=/index.html",
-    "deploy": "yarn build && yarn upload && yarn invalidate"
+    "serve": "$(yarn bin)/webpack-dev-server --open",
+    "webpack": "webpack $npm_package_config_webpack_args",
+    "webpack:production": "webpack $npm_package_config_webpack_args --env=production",
+    "clean": "rm -rf dev production",
+    "upload": "aws s3 sync --cache-control=\"max-age=3600\" --profile=personal production/ s3://timeline-lang.com",
+    "invalidate": "aws cloudfront create-invalidation --profile=personal --distribution-id=EV4FW9FKK2YHL --paths=/index.html",
+    "deploy": "yarn clean && yarn webpack:production && yarn upload && yarn invalidate"
   }
 }

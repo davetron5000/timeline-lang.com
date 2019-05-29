@@ -1,1 +1,4 @@
 node_modules
+dev
+production
+yarn-error.log
