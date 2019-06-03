@@ -1,3 +1,33 @@
-* {
-  font-family: Avenir, courier;
+body {
+  font-family: Palatino, serif;
+  font-size: 18px;
+}
+
+.bg-future-blue {
+  background-color: #C7B8FB;
+}
+
+.glow {
+  text-shadow: 0px 0px 20px #ffff00;
+}
+
+h1, h2, h3, h4, h5, .futura {
+  font-family: Futura, Avenir, courier;
+}
+
+.logomark {
+  letter-spacing: 0.04em;
+  font-variant-caps: small-caps;
+  font-weight: 600;
+}
+
+code, pre {
+  font-family: monaco, courier new, courier, monospace;
+}
+code pre span {
+  font-family: monaco, courier new, courier, monospace;
+}
+
+.bb--dashed {
+  border-bottom-style: dashed;
 }
