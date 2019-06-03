@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta charset="utf-8">
+    
+    <title>Timeline - Programming a Time Machine with Events and Risk-Driven Development</title>
+    <link rel="copyright" href="#about">
+    <meta name="author"      content="David Copeland">
+    <meta name="description" content="Website for the Timeline programming language">
+    
+    <meta name="og:title" content="Timeline Programming Language">
+    <meta name="og:url"   content="https://timeline-lang.com">
+    
+    <meta name="twitter:url"         content="https://timeline-lang.com">
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:creator"     content="@davetron5000">
+    <meta name="twitter:description" content="Website for the Timeline programming language">
+    <meta name="twitter:site"        content="@davetron5000">
+    <meta name="twitter:title"       content="Timeline Programming Language">
+    
+    <meta property="og:type" content="website">
+    
+  </head>
+  <body>
+    <header class="bg-dark-gray light-yellow pt3 mb0">
+      <div class="cf pr3">
+        <nav class="fr">
+          <a class="link light-yellow underline futura f4 pr2" href="/about.html">About</a>
+          <a class="link light-yellow underline futura f4 pr2" href="/docs.html">Docs</a>
+          <a class="link light-yellow underline futura f4 pr2" href="/install.html">Install</a>
+        </nav>
+      </div>
+      <div class="pr2 pl2 mb4">
+        <h1 class="tc f1 f-headline-ns mb0 mt3-ns">
+          <span class="logomark glow">
+          <a href="/" class="link light-yellow">Timeline</a>
+          </span>
+        </h1>
+      </div>
+      <div class="cf">
+        <div class="fl w-50 bb bb--dashed bw2">
+          <div class="tr">
+            &larr;
+            &larr;
+            &larr;
+          </div>
+        </div>
+        <div class="fl w-50 bb bl bw2">
+          &nbsp;
+        </div>
+      </div>
+    </header>
+    <main class="mt0 bg-future-blue near-black">
+      <section class="pv4 ph6-ns ph4">
+        <h1 class="f3 tc">How does Time Travel Work?</h1>
+<p class="lh-copy measure mh-auto">
+          The theoretical basis for time travel was established by Drs Neil Bell and Chris Clarke, and you should consult their numerous papers on the subject if you wish to have a thorough analysis.  This page presents only a lay overview.
+</p>
+<p class="lh-copy measure mh-auto">
+          First, to travel in time is to also travel in space.  The Earth rotates about the Sun, which rotates around the galactic center of the Milky Way galaxy.  The Milky Way is, of course, also in motion, inexorably moving away from the Big Bang.
+</p>
+        <figure class="tc">
+          <img class="shadow-5 mw-100" src="/images/earth-rotation__thumbnail.png" alt="Picture of the Earth rotating through space and time">
+          <figcaption>
+            <a target="_new" class="link black f6 underline" href="/images/earth-rotation.png">Click to view full-size in new window</a>
+          </figcaption>
+        </figure>
+<p class="lh-copy measure mh-auto">
+          Therefore, we need to know not just <em>when</em> we are going, but <em>where</em>.
+</p>
+<p class="lh-copy measure mh-auto">
+          A problem arises, however, when we consider the form of our travel.  Time travel, unfortunately, does not happen in an extra-dimensional reality. What actually  happens is that the machine driving our journey—the Time-Space Manifold—creates a vortex through space and time.  It helps to imagine this vortex as a tube, since this roughly matches its actual geometry.
+</p>
+        <figure class="tc">
+          <img class="shadow-5 mw-100" src="/images/vortex__thumbnail.png" alt="Image of a tube, representing the vortex through which we travel through time">
+          <figcaption>
+            <a target="_new" class="link black f6 underline" href="/images/vortex.png">Click to view full-size in new window</a>
+          </figcaption>
+        </figure>
+<p class="lh-copy measure mh-auto">
+          This vortex actually intersects with space.  Meaning: if there was an object in our path at any point in the past, we will run into that object.  However, unlike driving a car or flying a plane, where a human could react to obstacles, the journey through the vortex lasts only milliseconds.  So, imagine a journey that will only take 150ms, and 86ms into our journey, an object intersects our path:
+</p>
+        <figure class="tc">
+          <img class="shadow-5 mw-100" src="/images/collision__thumbnail.png" alt="Image of the vortex with an object inside it, showing  how we&#x27;ll collide after 86ms of our journey">
+          <figcaption>
+            <a target="_new" class="link black f6 underline" href="/images/collision.png">Click to view full-size in new window</a>
+          </figcaption>
+        </figure>
+<p class="lh-copy measure mh-auto">
+          This means that to avoid collision, we must route around this object.  For some objects whose position we know (such as the moon, or artificial satellites), we can pre-plan our trip to avoid them.  But space is filled with vast amounts of untracked objects.  There isn't enough time during the flight for a real person to avoid these objects.  Thus, we must create an automated flight plan that can react dynamically during the trip.
+</p>
+        <div class="measure mh-auto">
+<pre class="bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>adjustment      is distance   - 2ms
+adjustment-back is adjustment + 4ms
+direction       is 360º       - position
+
+send adjust vortex direction [
+  direction:direction
+] in adjustment
+
+send adjust vortex direction [
+  direction:direction
+] in adjustment-back
+</code></pre>
+        </div>
+<p class="lh-copy measure mh-auto">
+          This is overly simplistic, but gives the basic idea.  A real flight plan will be much more involved.
+</p>
+      </section>
+    </main>
+    <footer class="tc bt bg-dark-gray light-yellow ma0 pa0 pb3 pt2">
+      <a name="about"></a>
+      <p>
+        <span>
+          Copyright &copy; 2019
+        </span>
+        <span>
+          by
+        </span>
+        <span>
+          David Bryant Copeland,
+        </span>
+        <span>
+          All Rights Reserved.
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

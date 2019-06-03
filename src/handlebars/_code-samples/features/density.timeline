@@ -1,0 +1,15 @@
+direction is 45º
+opposite-direction is 360º - direction
+offset is direction - opposite-direction + 5º
+          <span class="red">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          |
+          |-- All expressions must be named</span>
+
+if direction &gt; 50º {
+   <span class="red">^^^^^^^^^^^^^^^
+   |
+   |-- must be variable or literal</span>
+}
+else {
+  do nothing
+}

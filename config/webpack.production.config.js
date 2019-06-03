@@ -3,6 +3,7 @@ const Merge                = require("webpack-merge");
 const CommonConfig         = require("./webpack.common.config.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlPlugin           = require("html-webpack-plugin");
+const ImageCopying         = require("./copy-images.config.js");
 
 
 module.exports = Merge(CommonConfig, {
@@ -12,6 +13,7 @@ module.exports = Merge(CommonConfig, {
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: "styles-[contenthash].css" }),
+    ImageCopying("production"),
     new HtmlPlugin({
       template: "./src/html/index.html",
       minify: {

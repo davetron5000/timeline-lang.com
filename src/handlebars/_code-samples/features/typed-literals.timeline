@@ -1,0 +1,18 @@
+on startup [] {
+  send trip details [
+    destination: [
+      declination: 37º20'12"3
+      ascension: 12º2'25"12
+      distance: 1,345,980km
+      time: 19,234,123s
+    ],
+    traveler: [
+      weight: 98kg,
+      dimensions: [
+       width: 4m
+       height: 4m
+       depth: 1m
+      ]
+    ]
+  ] now
+}

@@ -16,7 +16,6 @@ for (let i = 0; i < htmlFiles.length; i++) {
     );
   }
 }
-console.log(plugins);
 
 module.exports = {
   module: {

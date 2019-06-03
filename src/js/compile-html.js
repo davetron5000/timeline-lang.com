@@ -5,8 +5,20 @@ var Handlebars = require("handlebars");
 var handlebarsPath = path.join(__dirname,"..","handlebars");
 var partialsPath   = path.join(handlebarsPath,"_partials");
 var htmlPath       = path.join(__dirname,"..","html");
+var htmlPath       = path.join(__dirname,"..","html");
 
 var partials = fs.readdirSync(partialsPath);
+
+Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("codeSample", function(codeFilePath) {
+  var file = path.join(handlebarsPath,"_code-samples",codeFilePath)
+  var code = fs.readFileSync(file,"UTF-8");
+
+  return new Handlebars.SafeString(code);
+});
 
 for (var i = 0; i < partials.length; i++) {
   var partial = partials[i];

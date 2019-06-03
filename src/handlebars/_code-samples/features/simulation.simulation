@@ -1,0 +1,8 @@
+> timeline plan.timeline
+<span class=" green">Success..............92.00%</span>
+<span class=" light-red">Failure..............08.00%
+  Hardware failure..........02.23%
+    Failed connection..............01.23%
+    <span class="red">Failed midstream...............01.00%
+  Small Object Collision....04.70%
+  Large Object Collision....01.07%

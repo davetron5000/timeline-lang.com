@@ -1,0 +1,11 @@
+adjustment      is distance   - 2ms
+adjustment-back is adjustment + 4ms
+direction       is 360º       - position
+
+send adjust vortex direction [
+  direction:direction
+] in adjustment
+
+send adjust vortex direction [
+  direction:direction
+] in adjustment-back

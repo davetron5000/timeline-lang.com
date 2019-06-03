@@ -1,0 +1,37 @@
+<header class="bg-dark-gray light-yellow pt3 mb0">
+  <div class="cf pr3">
+    <nav class="fr">
+{{> nav-link page="About" link="/about.html" currentPage=page }}
+{{> nav-link page="Docs" link="/docs.html" currentPage=page }}
+{{> nav-link page="Install" link="/install.html" currentPage=page }}
+    </nav>
+  </div>
+  <div class="pr2 pl2 mb4">
+    <h1 class="tc f1 f-headline-ns mb0 mt3-ns">
+      <span class="logomark glow">
+{{#ifEquals page "index"}}
+      Timeline
+{{else}}
+      <a href="/" class="link light-yellow">Timeline</a>
+{{/ifEquals}}
+      </span>
+    </h1>
+{{#if tagline }}
+    <h2 class="mt1 f4 lh-title normal tc">
+      An event-based programming language for safe time travel.
+    </h2>
+{{/if}}
+  </div>
+  <div class="cf">
+    <div class="fl w-50 bb bb--dashed bw2">
+      <div class="tr">
+        &larr;
+        &larr;
+        &larr;
+      </div>
+    </div>
+    <div class="fl w-50 bb bl bw2">
+      &nbsp;
+    </div>
+  </div>
+</header>

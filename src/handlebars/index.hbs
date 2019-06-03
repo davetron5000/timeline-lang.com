@@ -5,47 +5,19 @@
     {{> social-metadata }}
   </head>
   <body>
-    <header class="bg-dark-gray light-yellow pt3 mb0">
-      <div class="cf pr3">
-        <nav class="fr">
-          <a class="link light-yellow underline futura f4 pr2" href="/about.html">About</a>
-          <a class="link light-yellow underline futura f4 pr2" href="#">Docs</a>
-          <a class="link light-yellow underline futura f4" href="#">Install</a>
-        </nav>
-      </div>
-      <div class="pr2 pl2">
-        <h1 class="tc f1 f-headline-ns mb0 mt3-ns">
-          <span class="logomark glow">Timeline</span>
-        </h1>
-        <h2 class="mt1 f4 lh-title normal tc mb4">
-          An event-based programming language for safe time travel.
-        </h2>
-      </div>
-      <div class="cf">
-        <div class="fl w-50 bb bb--dashed bw2">
-          <div class="tr">
-            &larr;
-            &larr;
-            &larr;
-          </div>
-        </div>
-        <div class="fl w-50 bb bl bw2">
-          &nbsp;
-        </div>
-      </div>
-    </header>
+    {{> header page="index" tagline="true" }}
     <main class="mt0 bg-future-blue near-black">
       <div class="tc pt4">
-        <a href="#" class="dib link ba br3 pa3 ph4 f3 futura light-yellow bg-dark-gray b--light-yellow grow">
+        <a href="/install.html" class="dib link ba br3 pa3 ph4 f3 futura light-yellow bg-dark-gray b--light-yellow grow">
           Get Started
         </a>
       </div>
       <section class="mt4">
         <article class="ph3">
           <h1 class="tc f3-ns f4 lh-title">What problems does <span class="logomark">Timeline</span> solve?</h1>
-          <p class="lh-copy">
+          {{#> p-copy }}
             Since time travel is inherently dangerous, the programming language we use must focus on safety, predictability, and comprehensibility. <span class="logomark">Timeline</span> is designed to make it as easy as possible to write software whose behavior we can both accurately predict and accurately explain.  It makes many tradeoffs in order to achieve this, all based on its core values.
-          </p>
+          {{/p-copy }}
         </article>
         <article class="bg-light-yellow dark-gray pv3">
           <div class="ph5 tc">
@@ -60,127 +32,23 @@
         </article>
         <section class="ph3">
           <h3 class="tc f2">Features</h3>
-{{> feature title="No Functions or I/O—Only Events"}}
-          <section class="cf mt4-ns">
-            <div class="fl w-100">
-              <h1 class="f4 lh-title mb0">
-                Static Typing, including literals
-              </h1>
-            </div>
-            <div class="fl w-100 w-50-ns">
-              <pre class="bg-near-black light-green pa2 ba br3 b--light-green"><code>on startup [] {
-  send trip details [
-    destination: [
-      declination: 37º20'12"3
-      ascension: 12º2'25"12
-      distance: 1,345,980km
-      time: 19,234,123s
-    ],
-    traveler: [
-      weight: 98kg,
-      dimensions: [
-       width: 4m
-       height: 4m
-       depth: 1m
-      ]
-    ]
-  ] now
-}</code></pre>
-            </div>
-            <div class="fl w-100 w-50-ns">
-              <p class="lh-copy pl3-ns">
-                The runtime knows—and will enforce—the types of everything.  The literal values above are typed.  There is rarely a need for primitive/untyped vlues like raw integers.  The compiler understands that <code>37º20'12"3</code> is an <code>Angle</code> of 37 degrees, 20 hours, 12 minutes, and 3 seconds, and will construct the requisite data type.  Further, `destination` is a `Destination`, which is created by the values inside the brackets.  Lastly, large numeric values must have commas for readability.
-            </div>
-            </p>
-          </section>
-          <section class="cf mt4-ns">
-            <div class="fl w-100">
-              <h1 class="f4 lh-title mb0">Minimal density per line</h1>
-            </div>
-            <div class="fl w-100 w-50-ns">
-              <pre class="bg-near-black f7 f5-ns light-green pa2 ba br3 b--light-green"><code>direction is 45º
-opposite-direction is 360º - direction
-offset is direction - opposite-direction + 5º
-          <span class="red">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-          |
-          |-- All expressions must be named</span>
-
-if direction &gt; 50º {
-   <span class="red">^^^^^^^^^^^^^^^
-   |
-   |-- must be variable or literal</span>
-}
-else {
-  do nothing
-}</code></pre>
-            </div>
-            <div class="fl w-100 w-50-ns">
-              <p class="lh-copy pl3-ns">
-                All expressions are <code>X «oper» Y</code> and cannot be nested or compound.  They cannot be used in control structures.  This means that every expression must have a name—the variable to which it is assigned.
-              </p>
-            </div>
-          </section>
-          <section class="cf mt4-ns">
-            <div class="fl w-100">
-              <h1 class="f4 lh-title mb0">Names must be defined…in the dictionary</h1>
-            </div>
-            <div class="fl w-100 w-50-ns">
-              <pre class="bg-near-black light-green pa2 ba br3 b--light-green"><code>direction     is 45º
-opp-direction is 360º - direction
-<span class="red b">^^^
-|
-|-- “opp” is not a word</span>
-
-send mv up [] now
-     <span class="red b">^^
-     |
-     |-- “mv” is not a word</span></pre></code>
-            </div>
-            <div class="fl w-100 w-50-ns">
-              <p class="lh-copy pl3-ns">
-                All variables must either be dictionary words, or be dictionary words joined with a dash.  To use an undefined word in a variable, that word must first be defined in the dictionary.  The result is that all variables are constructed of defined words.  Same goes for custom event names.
-              </p>
-            </div>
-          </section>
-          <section class="cf mt4-ns">
-            <div class="fl w-100">
-              <h1 class="f4 lh-title mb0">There are no unit test allowed</h1>
-            </div>
-            <div class="fl w-100 w-50-ns">
-              <pre class="f5-ns f6 bg-near-black light-green pa2 ba br3 b--light-green"><code>&gt; timeline plan.timeline
-<span class=" green">Success..............92.00%</span>
-<span class=" light-red">Failure..............08.00%
-  Hardware failure..........02.23%
-    Failed connection..............01.23%
-    <span class="red">Failed midstream...............01.00%
-  Small Object Collision....04.70%
-  Large Object Collision....01.07%</span>
-</span></code></pre>
-            </div>
-            <div class="fl w-100 w-50-ns">
-              <p class="lh-copy pl3-ns">
-              Writing code—and checking if it will work—is done through a Monte Carlo simulation. Based on our understanding of the universe and the objects within it, <span class="logomark">Timeline</span> will give you a risk assessment of your flight plan.  You write code only to address a known risk.  When the risk has been reduced enough that the trip is worth it…take the trip.
-            </p>
-          </section>
-        </section>
+{{#> feature title="No Functions or I/O—Only Events" code="features/send-disconnect.timeline"}}
+All code is executed in response to a well-defined event.  While code can have logic and computation, it's only means of interacting outside of itself is to send events.  Above we tell the Time-Space Manifold to disconnect its vortex 10ms after it's been established.
+{{/feature}}
+{{#> feature title="Static Typing, Including Literals" code="features/typed-literals.timeline"}}
+The runtime knows—and will enforce—the types of everything.  The literal values above are typed.  There is rarely a need for primitive/untyped vlues like raw integers.  The compiler understands that <code>37º20'12"3</code> is an <code>Angle</code> of 37 degrees, 20 hours, 12 minutes, and 3 seconds, and will construct the requisite data type.  Further, `destination` is a `Destination`, which is created by the values inside the brackets.  Lastly, large numeric values must have commas for readability.
+{{/feature}}
+{{#> feature title="Minimal Density Per Line" code="features/density.timeline"}}
+All expressions are <code>X «oper» Y</code> and cannot be nested or compound.  They cannot be used in control structures.  This means that every expression must have a name—the variable to which it is assigned.
+{{/feature}}
+{{#> feature title="Names Must Be Defined…in the Dictionary" code="features/naming.timeline"}}
+All variables must either be dictionary words, or be dictionary words joined with a dash.  To use an undefined word in a variable, that word must first be defined in the dictionary.  The result is that all variables are constructed of defined words.  Same goes for custom event names.
+{{/feature}}
+{{#> feature title="There are No Unit Tests—Plans are Simulated" code="features/simulation.simulation"}}
+Writing code—and checking if it will work—is done through a Monte Carlo simulation. Based on our understanding of the universe and the objects within it, <span class="logomark">Timeline</span> will give you a risk assessment of your flight plan.  You write code only to address a known risk.  When the risk has been reduced enough that the trip is worth it…take the trip.
+{{/feature}}
       </section>
     </main>
-    <footer class="tc bt bg-dark-gray light-yellow ma0 pa0 pb3 pt2">
-      <a name="about"></a>
-      <p>
-        <span>
-          Copyright &copy; 2019
-        </span>
-        <span>
-          by
-        </span>
-        <span>
-          David Bryant Copeland,
-        </span>
-        <span>
-          All Rights Reserved.
-        </span>
-      </p>
-    </footer>
+    {{> footer }}
   </body>
 </html>

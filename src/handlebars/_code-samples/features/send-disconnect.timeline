@@ -1,0 +1,3 @@
+on vortex established [] {
+  send disconnect [] in 10ms
+}

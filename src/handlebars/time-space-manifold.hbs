@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> header-metadata }}
+    {{> social-metadata }}
+  </head>
+  <body>
+    {{> header page="Time Space Manifold" }}
+    <main class="mt0 bg-future-blue near-black">
+      <section class="pv4 ph6-ns ph4">
+        <h1 class="f3 tc">How does Time Travel Work?</h1>
+        {{#> p-copy }}
+          The theoretical basis for time travel was established by Drs Neil Bell and Chris Clarke, and you should consult their numerous papers on the subject if you wish to have a thorough analysis.  This page presents only a lay overview.
+        {{/p-copy }}
+        {{#> p-copy }}
+          First, to travel in time is to also travel in space.  The Earth rotates about the Sun, which rotates around the galactic center of the Milky Way galaxy.  The Milky Way is, of course, also in motion, inexorably moving away from the Big Bang.
+        {{/p-copy }}
+        {{> figure image_name="earth-rotation" image_alt="Picture of the Earth rotating through space and time" }}
+        {{#> p-copy }}
+          Therefore, we need to know not just <em>when</em> we are going, but <em>where</em>.
+        {{/p-copy }}
+        {{#> p-copy }}
+          A problem arises, however, when we consider the form of our travel.  Time travel, unfortunately, does not happen in an extra-dimensional reality. What actually  happens is that the machine driving our journey—the Time-Space Manifold—creates a vortex through space and time.  It helps to imagine this vortex as a tube, since this roughly matches its actual geometry.
+        {{/p-copy }}
+        {{> figure image_name="vortex" image_alt="Image of a tube, representing the vortex through which we travel through time" }}
+        {{#> p-copy }}
+          This vortex actually intersects with space.  Meaning: if there was an object in our path at any point in the past, we will run into that object.  However, unlike driving a car or flying a plane, where a human could react to obstacles, the journey through the vortex lasts only milliseconds.  So, imagine a journey that will only take 150ms, and 86ms into our journey, an object intersects our path:
+        {{/p-copy }}
+        {{> figure image_name="collision" image_alt="Image of the vortex with an object inside it, showing  how we'll collide after 86ms of our journey" }}
+        {{#> p-copy }}
+          This means that to avoid collision, we must route around this object.  For some objects whose position we know (such as the moon, or artificial satellites), we can pre-plan our trip to avoid them.  But space is filled with vast amounts of untracked objects.  There isn't enough time during the flight for a real person to avoid these objects.  Thus, we must create an automated flight plan that can react dynamically during the trip.
+        {{/p-copy }}
+        <div class="measure mh-auto">
+{{> code file="basic-avoid.timeline" }}
+        </div>
+        {{#> p-copy }}
+          This is overly simplistic, but gives the basic idea.  A real flight plan will be much more involved.
+        {{/p-copy }}
+      </section>
+    </main>
+    {{> footer }}
+  </body>
+</html>
