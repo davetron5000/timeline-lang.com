@@ -1,26 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta charset="utf-8">
-    
-    <title>Timeline - Programming a Time Machine with Events and Risk-Driven Development</title>
-    <link rel="copyright" href="#about">
-    <meta name="author"      content="David Copeland">
-    <meta name="description" content="Website for the Timeline programming language">
-    
-    <meta name="og:title" content="Timeline Programming Language">
-    <meta name="og:url"   content="https://timeline-lang.com">
-    
-    <meta name="twitter:url"         content="https://timeline-lang.com">
-    <meta name="twitter:card"        content="summary">
-    <meta name="twitter:creator"     content="@davetron5000">
-    <meta name="twitter:description" content="Website for the Timeline programming language">
-    <meta name="twitter:site"        content="@davetron5000">
-    <meta name="twitter:title"       content="Timeline Programming Language">
-    
-    <meta property="og:type" content="website">
-    
+    {{> header-metadata }}
+    {{> social-metadata }}
   </head>
   <body>
     <header class="bg-dark-gray light-yellow pt3 mb0">
@@ -78,21 +60,7 @@
         </article>
         <section class="ph3">
           <h3 class="tc f2">Features</h3>
-<section class="cf mt4-ns">
-  <div class="fl w-100">
-    <h1 class="f4 lh-title mb0">No Functions or I/O—Only Events</h1>
-  </div>
-  <div class="fl w-100 w-50-ns">
-    <pre class="bg-near-black light-green pa2 ba br3 b--light-green"><code>on vortex established [] {
-send disconnect [] in 10ms
-}</code></pre>
-  </div>
-  <div class="fl w-100 w-50-ns">
-    <p class="lh-copy pl3-ns">
-      All code is executed in response to a well-defined event.  While code can have logic and computation, it's only means of interacting outside of itself is to send events.  Above we tell the Time-Space Manifold to disconnect its vortex 10ms after it's been established.
-    </p>
-  </div>
-</section>
+{{> feature title="No Functions or I/O—Only Events"}}
           <section class="cf mt4-ns">
             <div class="fl w-100">
               <h1 class="f4 lh-title mb0">

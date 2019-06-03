@@ -1,9 +1,24 @@
 const HtmlPlugin           = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const fs                   = require("fs");
+const path                 = require("path");
 
+let plugins = [];
+const htmlFiles = fs.readdirSync(path.join(__dirname,"..","src","html"));
+for (let i = 0; i < htmlFiles.length; i++) {
+  const htmlFile = htmlFiles[i];
+  if (path.extname(htmlFile) === ".html") {
+    plugins.push(
+      new HtmlPlugin({
+        template: "./src/html/" + htmlFile,
+        filename: htmlFile
+      })
+    );
+  }
+}
+console.log(plugins);
 
 module.exports = {
-/* start new code */
   module: {
     rules: [
       {
@@ -15,12 +30,7 @@ module.exports = {
       }
     ]
   },
-/* end new code */
-  plugins: [
-    new HtmlPlugin({
-      template: "./src/html/index.html"
-    })
-  ],
+  plugins: plugins,
   entry: './src/js/index.js',
   mode: 'none'
 };
