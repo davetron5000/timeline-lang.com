@@ -40,3 +40,9 @@ code pre span {
 .bb--dashed {
   border-bottom-style: dashed;
 }
+
+@media screen and (min-width: 30em) {
+  .list-ns {
+    list-style-type: none;
+  }
+}
