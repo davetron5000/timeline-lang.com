@@ -30,6 +30,6 @@ module.exports = {
     ]
   },
   plugins: plugins,
-  entry: './src/js/index.js',
+  entry: './src/js/client/index.js',
   mode: 'none'
 };

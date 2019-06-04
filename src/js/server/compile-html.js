@@ -1,15 +1,15 @@
 const fs                 = require("fs");
 const path               = require("path");
 const Handlebars         = require("handlebars");
-const ifEqualsHelper     = require("./ifEquals-helper.js");
-const codeSampleHelper   = require("./codeSample-helper.js");
+const ifEqualsHelper     = require("./helpers/if_equals.js");
+const codeSampleHelper   = require("./helpers/code_sample.js");
 
-const handlebarsPath = path.join(__dirname,"..","handlebars");
+const handlebarsPath = path.join(__dirname,"..","..","handlebars");
 const partialsPath   = path.join(handlebarsPath,"_partials");
-const htmlPath       = path.join(__dirname,"..","html");
+const htmlPath       = path.join(__dirname,"..","..","html");
 
-Handlebars.registerHelper("ifEquals", ifEqualsHelper());
-Handlebars.registerHelper("codeSample", codeSampleHelper(handlebarsPath) );
+Handlebars.registerHelper("if-equals", ifEqualsHelper());
+Handlebars.registerHelper("code-sample", codeSampleHelper(handlebarsPath) );
 
 function log(string) {
   console.log(`[${__filename}]: ${string}`);

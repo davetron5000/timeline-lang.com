@@ -2,8 +2,8 @@ const path               = require("path");
 const fs                 = require("fs");
 const Handlebars         = require("handlebars");
 const hljs               = require("highlight.js/lib/highlight");
-const timeline           = require("./timeline-highlight.js");
-const timelineSimulation = require("./timeline-simulation-highlight.js");
+const timeline           = require("../highlighters/timeline.js");
+const timelineSimulation = require("../highlighters/timeline-simulation.js");
 
 hljs.registerLanguage("timeline", timeline);
 hljs.registerLanguage("simulation", timelineSimulation);

@@ -24,7 +24,7 @@
     "webpack_args": " --config webpack.config.js --display-error-details"
   },
   "scripts": {
-    "build": "node src/js/compile-html.js",
+    "build": "node src/js/server/compile-html.js",
     "serve": "yarn build && $(yarn bin)/webpack-dev-server --open",
     "webpack": "yarn build && webpack $npm_package_config_webpack_args",
     "webpack:production": "yarn build && webpack $npm_package_config_webpack_args --env=production",
