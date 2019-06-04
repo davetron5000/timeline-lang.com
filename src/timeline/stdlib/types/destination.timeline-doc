@@ -1,0 +1,7 @@
+type Destination contains [
+  ascension: Angle
+  declination: Angle
+  distance: Distance
+  duration: Time
+]
+A destination in time and space—where you want to go.

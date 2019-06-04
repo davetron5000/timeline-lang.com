@@ -1,0 +1,6 @@
+type Dimension contains [
+  width: Distance
+  height: Distance
+  depth: Distance
+]
+A cube that describes the outer-most dimensions of an object.

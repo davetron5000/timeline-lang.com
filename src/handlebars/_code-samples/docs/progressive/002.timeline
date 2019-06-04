@@ -1,0 +1,20 @@
+on start [] {
+  send trip details [
+    destination:[
+      ascension:60º23'42"
+      declination:75º02'12"
+      distance:384,402km
+      duration:1,296,000s
+    ]
+    traveler:[
+      weight:90kg
+      dimensions: [
+        width:1m
+        height:2m
+        depth:0.3m
+      ]
+    ]
+  ] now
+
+  send ping [] now
+}

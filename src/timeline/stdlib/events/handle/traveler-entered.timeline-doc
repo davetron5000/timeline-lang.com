@@ -1,0 +1,3 @@
+event traveler entered takes [
+]
+Triggered when the traveler enters the vortex and the trip begins.  Any distances-as-time would start when this is triggered. This is a good place to set up any pre-determined vortex adjustments, or to send pings.

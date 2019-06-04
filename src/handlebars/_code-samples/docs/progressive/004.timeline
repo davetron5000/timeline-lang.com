@@ -1,0 +1,32 @@
+on collision imminent [
+  distance:
+  position:
+  dimensions:
+] {
+  buffer          is 2ms
+  adjustment      is distance   - buffer
+  adjustment-back is adjustment + 4ms
+  direction       is 360º       - position
+
+  too-close?      is distance < 10ms
+
+  if too-close? {
+    send slow down then speed up [
+      slow-in:1ms
+      speed-up-in:adjustment-back
+    ] now
+  }
+  else {
+    do nothing
+  }
+
+  send adjust vortex direction [
+    direction:direction
+  ] in adjustment
+
+  send adjust vortex direction [
+    direction:direction
+  ] in adjustment-back
+
+  send ping [] in adjustment-back
+}

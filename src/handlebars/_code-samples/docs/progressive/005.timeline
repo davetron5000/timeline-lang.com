@@ -1,0 +1,12 @@
+on slow down then speed up [
+  slow-in:
+  speed-up-in:
+] {
+  send adjust vortex speed [
+    direction:90%
+  ] in slow-in
+
+  send adjust vortex direction [
+    direction:110%
+  ] in speed-up-in
+}

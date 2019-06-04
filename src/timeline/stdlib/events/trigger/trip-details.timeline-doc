@@ -1,0 +1,5 @@
+event trip details takes [
+  destination: Destination
+  traveler: Traveler
+]
+Contains the details of your trip, including where to go, when to go, and the size of the traveler.  When this is handled by the Time-Space Manifold, it will trigger the vortex established event (unless a hardware problem prevents it).

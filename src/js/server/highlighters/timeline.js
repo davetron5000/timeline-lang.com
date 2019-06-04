@@ -1,6 +1,6 @@
 module.exports = function(hljs) {
   return {
-    keywords: "on send now is in if else",
+    keywords: "on send now is if else",
     contains: [
       {
         className: "number",
@@ -40,6 +40,11 @@ module.exports = function(hljs) {
       {
         className: "keyword",
         begin: /do nothing/,
+        relevance: 0
+      },
+      {
+        className: "keyword",
+        begin: /\sin\s/,
         relevance: 0
       },
       {

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> header-metadata }}
+    {{> social-metadata }}
+  </head>
+  <body>
+    {{> header page="About" }}
+    <main class="mt0 bg-future-blue near-black">
+      <section class="pv4 ph6-ns ph4">
+        <h1 class="f3 tc">Docs</h1>
+        <nav class="tc">
+          <div class="mb2 nowrap di-ns">
+            <a class="link underline black" href="#lang">Language</a>
+            <small>
+              (<a class="link underline black" href="#example">Example</a> |
+              <a class="link underline black" href="#syntax">Syntax</a> |
+              <a class="link underline black" href="#semantics">Semantics</a>)
+            </small>
+          </div>
+          <span class="dn di-ns">&nbsp;&middot;&nbsp;</span>
+          <div class="mb2 nowrap di-ns">
+            <a class="link underline black" href="#stdlib">Standard Library</a>
+            <small>
+              (<a class="link underline black" href="#events">Events</a> | <a class="link underline black" href="#types">Data Types</a>)
+            </small>
+          </div>
+          <span class="dn di-ns">&nbsp;&middot;&nbsp;</span>
+          <div class="mb2 nowrap di-ns">
+            <a class="link underline black" href="#simulator">Simulator</a>
+          </div>
+        </nav>
+        <p class="bt b--dark-gray pt3 measure mh-auto lh-copy">
+          This is an overview of Timeline's documentation.  If this is your first time here, it might be helpful to understand <a class="link underline black" href="/time-space-manifold.html">how time travel works</a>.
+        </p>
+        <p class="tc">
+          ❧
+        </p>
+        <section class="measure-wide mh-auto">
+          <a name="lang"></a>
+          <h1 class="f4 ttu tracked">Language Overview</h1>
+          {{#> p-copy }}
+            Timeline is a relatively simple language, syntactically.  All code is executed in response to events, and all such code contains only logic or the triggering of other events.  There is no I/O, logging, functions, subroutines, promises, callbacks, or anything like that.
+          {{/p-copy }}
+          <a name="example"></a>
+          <h2 class="f4">Progressive Example</h2>
+          <p class="lh-copy measure mr-auto i b f6">
+            This will build up a sophisticated example showing language features in context.
+          </p>
+          {{#> p-copy }}
+            All code starts with registering an event handler via <code>on</code>, and it's customary to have the first bit of code inside the <code>start</code> event, which is the first even fired:
+          {{/p-copy }}
+{{>code file="docs/progressive/001.timeline"}}
+          {{#> p-copy }}
+            Inside <code>start</code>, you would trigger the <code>trip details</code> event, which tells the Time Space Manifold where you are going, when, and what's going through the vortex.  Because there is no I/O, there can be no interactive input, configuration files or the like, so you trigger everything in an event.  Since our flight plan is for a single trip only, hard-coding values is not only OK, it is expected.
+          {{/p-copy }}
+          {{#> p-copy }}
+            In this code, we include a destination using the <a class="link underline black" href="https://en.wikipedia.org/wiki/International_Celestial_Reference_Frame">International Celestial Reference Frame</a> coordinate system, or ICRF.  We also describe the travelers weight and a cube that completely encloses the traveler, to give a sense of size.
+          {{/p-copy }}
+{{>code file="docs/progressive/002.timeline"}}
+          {{#> p-copy }}
+            All event triggers match this pattern: <code class="nowrap">send «event name» [ «params» ] «when»</code>.  In this case, we send it immediately, using the keyword <code>now</code>.  Note that the values we are given are not naked numbers.  <span class="logomark">Timeline</span> prefers the use of well-defined data types, so instead of using <code>34.21222</code> to represent an angle, we can use the canonical encoding of an angle: <code class="nowrap">34°12'44"</code>.  This value is unambiguously an <code>Angle</code>, which makes the code much more readable than using a floating point value that you have to guess at its meaning.
+          {{/p-copy }}
+          {{#> p-copy }}
+            You can further note that large numeric values like <code>1,296,000km</code> are typed (the <code>km</code> suffix tells us it's a <code>Distance</code>), but we also use commas to make the number more readable.  These are required to ensure the correct transcoding of large values into the program.
+          {{/p-copy }}
+          {{#> p-copy }}
+          You may have noticed we are also sending a <code>ping</code>, which, if there are objects ahead of us in the vortex, will trigger the <code>collision imminent</code> event.  This event receives parameters:
+          {{/p-copy }}
+{{>code file="docs/progressive/003.timeline"}}
+          {{#> p-copy }}
+            You can consult the documentation for the types of the parameters (there's no need for your code to re-state what they are), but to save you time, <code>distance</code> is a <code>Time</code>, <code>position</code> is an <code>Angle</code>, and <code>dimensions</code> is a <code>Dimension</code>.
+          {{/p-copy }}
+          {{#> p-copy }}
+            As we look more into this code, we can see a variable assignment.  The variable <code>buffer</code> is given the value <code>2ms</code>, which is a <code>Time</code>.  The assignment happens via the <code>is</code> keyword.  The equals sign (<code>=</code>) used in many languages is somewhat confusing, especially when dealing with math. In math, “<code>=</code>” represents equality, not assignment.  Some languages create operators like <code>:=</code> to allay this confusion, or even use arrows, e.g. <code>direction &larr; 45º</code>, but we prefer the succinct and unambiguous <code>is</code>.  There can be no clearer way to state that the value of <code>buffer</code> is 2ms than how we have designed it.
+          {{/p-copy }}
+          {{#> p-copy }}
+            Lastly, you'll notice the expressions in use.  We assign <code>adjustment</code> to the result of subtracting <code>buffer</code> from <code>distance</code>.  Since both <code>buffer</code> and <code>distance</code> are <code>Time</code>s, and subtraction is defined on <code>Time</code> to produce a <code>Time</code>, the compiler (and us!) knows that <code>adjustment</code> is of type <code>Time</code>.  There's no need to restate this information in the  code.
+          {{/p-copy }}
+          {{#> p-copy }}
+            Suppose we wish to slow down before making our turn.  We can do this by checking the value of <code>distance</code>.  If it's less than 10ms, we trigger a custom event to slow down before the turn and speed up after.
+          {{/p-copy }}
+{{>code file="docs/progressive/004.timeline"}}
+          {{#> p-copy }}
+            Here we see our control structure via an <code>if</code> and <code>else</code>.  All <code>if</code> statements <em>must</em> have a corresponding <code>else</code>, even if there is no logic needed.  This creates general consistency in all code (you never have to wonder if the omitted <code>else</code> is intentional), and also ensures the programmer has thought through both cases, using the <code class="nowrap">do nothing</code> construct to explicitly indicate there is no code for the alternate case.
+          {{/p-copy }}
+          {{#> p-copy }}
+            You'll also note that the variable <code>too-close?</code> has a question mark in it.  Booleans are special, since they control the flow of code.  Thus, they must always end in a question mark which immediately calls out their specialness.  You might think we could omit the use of this boolean in our <code>if</code> statement, but <code>if</code> statements may only be based upon boolean literals or variables of type <code>Boolean</code>.  Expressions are not allowed.  This forces us to name all expressions.
+          {{/p-copy }}
+          {{#> p-copy }}
+            Lastly, we're triggering a custom event called <code class="nowrap">slow down then speed up</code>.  How does that work?  We can define it the same way as we handle built in events.  The types are derived from the callsite and assumed in the code.
+          {{/p-copy }}
+{{>code file="docs/progressive/005.timeline"}}
+          {{#> p-copy }}
+            You may be wondering why variable and parameter names are using dashes instead of underscores.  We can all agree that delimiting words in names using camel-case results in a mess of unreadability, but underscores solve this nicely.  Underscores are somewhat difficult to type in a QWERTY layout, requiring both pinky fingers (or a pinky and a ring finger). This results in numerous typos.  Dashes are easier to execute, so we use that.  When subtracting values, you must surround the hyphen with spaces to disambiguate (this also makes the code more readable).
+          {{/p-copy }}
+          {{#> p-copy }}
+            Next, let's see the definition of the language's syntax.  Note that there is significant semantic relevance to the language's constructs, for example, the syntax allows any variable to have a question mark at the end of its name, but this is only semantically allowed for booleans.
+          {{/p-copy }}
+<a name="syntax"></a>
+          <h2 class="f4">Language Syntax Reference</h2>
+{{>code file="docs/timeline.bnf"}}
+<a name="semantics"></a>
+          <h2 class="f4">Language Semantic Reference</h2>
+          {{#> p-copy }}
+            Referencing the tokens in the BNF above:
+          {{/p-copy }}
+          <ul class="lh-copy">
+            <li class="mb2"><strong>&lt;literal&gt;</strong> must conform to a known literal format. See <a class="link underscore black" href="#types">Data Types</a> for more.</li>
+            <li class="mb2"><strong>&lt;scheduled time&gt;</strong> must be a <code>Time</code> value</li>
+            <li class="mb2"><strong>&lt;send event&gt;</strong> must reference a known event or one defined in the current flight plan.</li>
+            <li class="mb2"><strong>&lt;variable assignment&gt;</strong> (e.g. <code class="nowrap">direction is 45º</code>) may only occur when declaring a variable the first time in a scope</li>
+            <li class="mb2"><strong>&lt;variable reassignment&gt;</strong> (e.g. <code class="nowrap">direction is now 33º</code>) may not occur to declare a variable, but <em>must</em> occur after a variable has been declared with <code>is</code></li>
+            <li class="mb2"><strong>&lt;word&gt;</strong>, which is used in variable names, event names, argument names, and parameter names <em>must</em> be in the dictionary</li>
+          </ul>
+        </section>
+        <section class="measure mh-auto">
+          <a name="stdlib"></a>
+          <h1 class="f4 ttu tracked">Standard Library</h1>
+          {{#> p-copy }}
+            <span class="logomark">Timeline</span>'s standard library consists of events and types.  In most cases, events are designed to either be triggered by your code or handled by it, but not both.
+          {{/p-copy }}
+          <a name="events"></a>
+          <h2 class="f4">Events</h2>
+          <h3 class="f5 pl2 tracked-tight underline">To Handle</h3>
+          {{ event-doc "handle/start" }}
+          {{ event-doc "handle/collision-imminent" }}
+          {{ event-doc "handle/traveler-entered" }}
+          {{ event-doc "handle/vortex-established" }}
+
+          <h3 class="f5 pl2 tracked-tight underline">To Trigger</h3>
+          {{ event-doc "trigger/adjust-vortex-direction" }}
+          {{ event-doc "trigger/adjust-vortex-speed" }}
+          {{ event-doc "trigger/ping" }}
+          {{ event-doc "trigger/trip-details" }}
+          <a name="types"></a>
+          <h2 class="f4">Data Types</h2>
+          {{ type-doc "angle" }}
+          {{ type-doc "destination" }}
+          {{ type-doc "dimension" }}
+          {{ type-doc "distance" }}
+          {{ type-doc "percent" }}
+          {{ type-doc "time" }}
+          {{ type-doc "traveler" }}
+          {{ type-doc "weight" }}
+        </section>
+        <section class="measure mh-auto">
+          <a name="simulator"></a>
+          <h1 class="f4 ttu tracked">Simulator</h1>
+        </section>
+      </section>
+    </main>
+    {{> footer }}
+  </body>
+</html>

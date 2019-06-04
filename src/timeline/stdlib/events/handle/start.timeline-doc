@@ -1,0 +1,3 @@
+event start takes [
+]
+The first event triggered. This is where you should set up your trip details.

@@ -1,0 +1,4 @@
+event adjust vortex speed takes [
+  speed: Percent
+]
+Manipulates the vortex to slow the traveler down, or speed it up, by the given percentage.

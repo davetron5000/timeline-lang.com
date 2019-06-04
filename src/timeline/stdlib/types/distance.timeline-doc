@@ -1,0 +1,8 @@
+type Distance contains [
+  kilometers: Integer
+]
+typed literal %{kilometers}km
+typed literal %{meters}m
+operator + produces Distance
+operator - produces Distance
+A physical distance.

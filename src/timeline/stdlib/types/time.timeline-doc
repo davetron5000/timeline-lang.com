@@ -1,0 +1,5 @@
+type Time contains [
+  seconds: Integer
+]
+typed literal %{seconds}s
+An amount of time in seconds.

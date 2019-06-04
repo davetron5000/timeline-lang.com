@@ -1,0 +1,5 @@
+type Percent contains [
+  percentage: Integer
+]
+typed literal %{percentage}%
+A percentage as a whole number, so e.g. 90% is 0.90.

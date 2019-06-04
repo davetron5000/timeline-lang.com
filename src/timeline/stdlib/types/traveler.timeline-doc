@@ -1,0 +1,5 @@
+type Traveler contains [
+  weight: Weight
+  dimensions: Dimension
+]
+What is going to travel in time.  It has a weight and a cube that describes it's largest dimensions.

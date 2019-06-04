@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta charset="utf-8">
+    
+    <title>Timeline - Programming a Time Machine with Events and Risk-Driven Development</title>
+    <link rel="copyright" href="#about">
+    <meta name="author"      content="David Copeland">
+    <meta name="description" content="Website for the Timeline programming language">
+    
+    <meta name="og:title" content="Timeline Programming Language">
+    <meta name="og:url"   content="https://timeline-lang.com">
+    
+    <meta name="twitter:url"         content="https://timeline-lang.com">
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:creator"     content="@davetron5000">
+    <meta name="twitter:description" content="Website for the Timeline programming language">
+    <meta name="twitter:site"        content="@davetron5000">
+    <meta name="twitter:title"       content="Timeline Programming Language">
+    
+    <meta property="og:type" content="website">
+    
+  </head>
+  <body>
+    <header class="bg-dark-gray light-yellow pt3 mb0">
+      <div class="cf pr3">
+        <nav class="fr">
+          <span class="link light-yellow futura f4 pr2">About</span>
+          <a class="link light-yellow underline futura f4 pr2" href="/docs.html">Docs</a>
+          <a class="link light-yellow underline futura f4 pr2" href="/install.html">Install</a>
+        </nav>
+      </div>
+      <div class="pr2 pl2 mb4">
+        <h1 class="tc f1 f-headline-ns mb0 mt3-ns">
+          <span class="logomark glow">
+          <a href="/" class="link light-yellow">Timeline</a>
+          </span>
+        </h1>
+      </div>
+      <div class="cf">
+        <div class="fl w-50 bb bb--dashed bw2">
+          <div class="tr">
+            &larr;
+            &larr;
+            &larr;
+          </div>
+        </div>
+        <div class="fl w-50 bb bl bw2">
+          &nbsp;
+        </div>
+      </div>
+    </header>
+    <main class="mt0 bg-future-blue near-black">
+      <section class="pv4 ph6-ns ph4">
+        <h1 class="f3 tc">Docs</h1>
+        <nav class="tc">
+          <div class="mb2 nowrap di-ns">
+            <a class="link underline black" href="#lang">Language</a>
+            <small>
+              (<a class="link underline black" href="#example">Example</a> |
+              <a class="link underline black" href="#syntax">Syntax</a> |
+              <a class="link underline black" href="#semantics">Semantics</a>)
+            </small>
+          </div>
+          <span class="dn di-ns">&nbsp;&middot;&nbsp;</span>
+          <div class="mb2 nowrap di-ns">
+            <a class="link underline black" href="#stdlib">Standard Library</a>
+            <small>
+              (<a class="link underline black" href="#events">Events</a> | <a class="link underline black" href="#types">Data Types</a>)
+            </small>
+          </div>
+          <span class="dn di-ns">&nbsp;&middot;&nbsp;</span>
+          <div class="mb2 nowrap di-ns">
+            <a class="link underline black" href="#simulator">Simulator</a>
+          </div>
+        </nav>
+        <p class="bt b--dark-gray pt3 measure mh-auto lh-copy">
+          This is an overview of Timeline's documentation.  If this is your first time here, it might be helpful to understand <a class="link underline black" href="/time-space-manifold.html">how time travel works</a>.
+        </p>
+        <p class="tc">
+          ❧
+        </p>
+        <section class="measure-wide mh-auto">
+          <a name="lang"></a>
+          <h1 class="f4 ttu tracked">Language Overview</h1>
+<p class="lh-copy measure mh-auto">
+            Timeline is a relatively simple language, syntactically.  All code is executed in response to events, and all such code contains only logic or the triggering of other events.  There is no I/O, logging, functions, subroutines, promises, callbacks, or anything like that.
+</p>
+          <a name="example"></a>
+          <h2 class="f4">Progressive Example</h2>
+          <p class="lh-copy measure mr-auto i b f6">
+            This will build up a sophisticated example showing language features in context.
+          </p>
+<p class="lh-copy measure mh-auto">
+            All code starts with registering an event handler via <code>on</code>, and it's customary to have the first bit of code inside the <code>start</code> event, which is the first even fired:
+</p>
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-keyword">on</span> start <span class="hljs-type">[</span><span class="hljs-type">]</span> <span class="hljs-type">{</span>
+  «code here»
+<span class="hljs-type">}</span>
+</code></pre>
+<p class="lh-copy measure mh-auto">
+            Inside <code>start</code>, you would trigger the <code>trip details</code> event, which tells the Time Space Manifold where you are going, when, and what's going through the vortex.  Because there is no I/O, there can be no interactive input, configuration files or the like, so you trigger everything in an event.  Since our flight plan is for a single trip only, hard-coding values is not only OK, it is expected.
+</p>
+<p class="lh-copy measure mh-auto">
+            In this code, we include a destination using the <a class="link underline black" href="https://en.wikipedia.org/wiki/International_Celestial_Reference_Frame">International Celestial Reference Frame</a> coordinate system, or ICRF.  We also describe the travelers weight and a cube that completely encloses the traveler, to give a sense of size.
+</p>
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-keyword">on</span> start <span class="hljs-type">[</span><span class="hljs-type">]</span> <span class="hljs-type">{</span>
+  <span class="hljs-keyword">send</span> trip details <span class="hljs-type">[</span>
+    <span class="hljs-name">destination:</span><span class="hljs-type">[</span>
+      <span class="hljs-name">ascension:</span><span class="hljs-number">60º23'42"</span>
+      <span class="hljs-name">declination:</span><span class="hljs-number">75º02'12"</span>
+      <span class="hljs-name">distance:</span><span class="hljs-number">384,402km</span>
+      <span class="hljs-name">duration:</span><span class="hljs-number">1,296,000s</span>
+    <span class="hljs-type">]</span>
+    <span class="hljs-name">traveler:</span><span class="hljs-type">[</span>
+      <span class="hljs-name">weight:</span><span class="hljs-number">90kg</span>
+      <span class="hljs-name">dimensions:</span> <span class="hljs-type">[</span>
+        <span class="hljs-name">width:</span><span class="hljs-number">1m</span>
+        <span class="hljs-name">height:</span><span class="hljs-number">2m</span>
+        <span class="hljs-name">depth:</span>0.<span class="hljs-number">3m</span>
+      <span class="hljs-type">]</span>
+    <span class="hljs-type">]</span>
+  <span class="hljs-type">]</span> <span class="hljs-keyword">now</span>
+
+  <span class="hljs-keyword">send</span> ping <span class="hljs-type">[</span><span class="hljs-type">]</span> <span class="hljs-keyword">now</span>
+<span class="hljs-type">}</span>
+</code></pre>
+<p class="lh-copy measure mh-auto">
+            All event triggers match this pattern: <code class="nowrap">send «event name» [ «params» ] «when»</code>.  In this case, we send it immediately, using the keyword <code>now</code>.  Note that the values we are given are not naked numbers.  <span class="logomark">Timeline</span> prefers the use of well-defined data types, so instead of using <code>34.21222</code> to represent an angle, we can use the canonical encoding of an angle: <code class="nowrap">34°12'44"</code>.  This value is unambiguously an <code>Angle</code>, which makes the code much more readable than using a floating point value that you have to guess at its meaning.
+</p>
+<p class="lh-copy measure mh-auto">
+            You can further note that large numeric values like <code>1,296,000km</code> are typed (the <code>km</code> suffix tells us it's a <code>Distance</code>), but we also use commas to make the number more readable.  These are required to ensure the correct transcoding of large values into the program.
+</p>
+<p class="lh-copy measure mh-auto">
+          You may have noticed we are also sending a <code>ping</code>, which, if there are objects ahead of us in the vortex, will trigger the <code>collision imminent</code> event.  This event receives parameters:
+</p>
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-keyword">on</span> collision imminent <span class="hljs-type">[</span>
+  <span class="hljs-name">distance:</span>
+  <span class="hljs-name">position:</span>
+  <span class="hljs-name">dimensions:</span>
+<span class="hljs-type">]</span> <span class="hljs-type">{</span>
+  buffer          <span class="hljs-keyword">is</span> <span class="hljs-number">2ms</span>
+  adjustment      <span class="hljs-keyword">is</span> distance  <span class="hljs-type"> - </span>buffer
+  adjustment-back <span class="hljs-keyword">is</span> adjustment<span class="hljs-type"> + </span><span class="hljs-number">4ms</span>
+  direction       <span class="hljs-keyword">is</span> <span class="hljs-number">360º</span>      <span class="hljs-type"> - </span>position
+
+  <span class="hljs-keyword">send</span> adjust vortex direction <span class="hljs-type">[</span>
+    <span class="hljs-name">direction:</span>direction
+  <span class="hljs-type">]</span><span class="hljs-keyword"> in </span>adjustment
+
+  <span class="hljs-keyword">send</span> adjust vortex direction <span class="hljs-type">[</span>
+    <span class="hljs-name">direction:</span>direction
+  <span class="hljs-type">]</span><span class="hljs-keyword"> in </span>adjustment-back
+
+  <span class="hljs-keyword">send</span> ping <span class="hljs-type">[</span><span class="hljs-type">]</span><span class="hljs-keyword"> in </span>adjustment-back
+<span class="hljs-type">}</span>
+</code></pre>
+<p class="lh-copy measure mh-auto">
+            You can consult the documentation for the types of the parameters (there's no need for your code to re-state what they are), but to save you time, <code>distance</code> is a <code>Time</code>, <code>position</code> is an <code>Angle</code>, and <code>dimensions</code> is a <code>Dimension</code>.
+</p>
+<p class="lh-copy measure mh-auto">
+            As we look more into this code, we can see a variable assignment.  The variable <code>buffer</code> is given the value <code>2ms</code>, which is a <code>Time</code>.  The assignment happens via the <code>is</code> keyword.  The equals sign (<code>=</code>) used in many languages is somewhat confusing, especially when dealing with math. In math, “<code>=</code>” represents equality, not assignment.  Some languages create operators like <code>:=</code> to allay this confusion, or even use arrows, e.g. <code>direction &larr; 45º</code>, but we prefer the succinct and unambiguous <code>is</code>.  There can be no clearer way to state that the value of <code>buffer</code> is 2ms than how we have designed it.
+</p>
+<p class="lh-copy measure mh-auto">
+            Lastly, you'll notice the expressions in use.  We assign <code>adjustment</code> to the result of subtracting <code>buffer</code> from <code>distance</code>.  Since both <code>buffer</code> and <code>distance</code> are <code>Time</code>s, and subtraction is defined on <code>Time</code> to produce a <code>Time</code>, the compiler (and us!) knows that <code>adjustment</code> is of type <code>Time</code>.  There's no need to restate this information in the  code.
+</p>
+<p class="lh-copy measure mh-auto">
+            Suppose we wish to slow down before making our turn.  We can do this by checking the value of <code>distance</code>.  If it's less than 10ms, we trigger a custom event to slow down before the turn and speed up after.
+</p>
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-keyword">on</span> collision imminent <span class="hljs-type">[</span>
+  <span class="hljs-name">distance:</span>
+  <span class="hljs-name">position:</span>
+  <span class="hljs-name">dimensions:</span>
+<span class="hljs-type">]</span> <span class="hljs-type">{</span>
+  buffer          <span class="hljs-keyword">is</span> <span class="hljs-number">2ms</span>
+  adjustment      <span class="hljs-keyword">is</span> distance  <span class="hljs-type"> - </span>buffer
+  adjustment-back <span class="hljs-keyword">is</span> adjustment<span class="hljs-type"> + </span><span class="hljs-number">4ms</span>
+  direction       <span class="hljs-keyword">is</span> <span class="hljs-number">360º</span>      <span class="hljs-type"> - </span>position
+
+  too-close?      <span class="hljs-keyword">is</span> distance<span class="hljs-type"> &lt; </span><span class="hljs-number">10ms</span>
+
+  <span class="hljs-keyword">if</span> too-close? <span class="hljs-type">{</span>
+    <span class="hljs-keyword">send</span> slow down then speed up <span class="hljs-type">[</span>
+      <span class="hljs-name">slow-in:</span><span class="hljs-number">1ms</span>
+      <span class="hljs-name">speed-up-in:</span>adjustment-back
+    <span class="hljs-type">]</span> <span class="hljs-keyword">now</span>
+  <span class="hljs-type">}</span>
+  <span class="hljs-keyword">else</span> <span class="hljs-type">{</span>
+    <span class="hljs-keyword">do nothing</span>
+  <span class="hljs-type">}</span>
+
+  <span class="hljs-keyword">send</span> adjust vortex direction <span class="hljs-type">[</span>
+    <span class="hljs-name">direction:</span>direction
+  <span class="hljs-type">]</span><span class="hljs-keyword"> in </span>adjustment
+
+  <span class="hljs-keyword">send</span> adjust vortex direction <span class="hljs-type">[</span>
+    <span class="hljs-name">direction:</span>direction
+  <span class="hljs-type">]</span><span class="hljs-keyword"> in </span>adjustment-back
+
+  <span class="hljs-keyword">send</span> ping <span class="hljs-type">[</span><span class="hljs-type">]</span><span class="hljs-keyword"> in </span>adjustment-back
+<span class="hljs-type">}</span>
+</code></pre>
+<p class="lh-copy measure mh-auto">
+            Here we see our control structure via an <code>if</code> and <code>else</code>.  All <code>if</code> statements <em>must</em> have a corresponding <code>else</code>, even if there is no logic needed.  This creates general consistency in all code (you never have to wonder if the omitted <code>else</code> is intentional), and also ensures the programmer has thought through both cases, using the <code class="nowrap">do nothing</code> construct to explicitly indicate there is no code for the alternate case.
+</p>
+<p class="lh-copy measure mh-auto">
+            You'll also note that the variable <code>too-close?</code> has a question mark in it.  Booleans are special, since they control the flow of code.  Thus, they must always end in a question mark which immediately calls out their specialness.  You might think we could omit the use of this boolean in our <code>if</code> statement, but <code>if</code> statements may only be based upon boolean literals or variables of type <code>Boolean</code>.  Expressions are not allowed.  This forces us to name all expressions.
+</p>
+<p class="lh-copy measure mh-auto">
+            Lastly, we're triggering a custom event called <code class="nowrap">slow down then speed up</code>.  How does that work?  We can define it the same way as we handle built in events.  The types are derived from the callsite and assumed in the code.
+</p>
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-keyword">on</span> slow down then speed up <span class="hljs-type">[</span>
+  <span class="hljs-name">slow-in:</span>
+  <span class="hljs-name">speed-up-in:</span>
+<span class="hljs-type">]</span> <span class="hljs-type">{</span>
+  <span class="hljs-keyword">send</span> adjust vortex speed <span class="hljs-type">[</span>
+    <span class="hljs-name">direction:</span>90%
+  <span class="hljs-type">]</span><span class="hljs-keyword"> in </span>slow-in
+
+  <span class="hljs-keyword">send</span> adjust vortex direction <span class="hljs-type">[</span>
+    <span class="hljs-name">direction:</span>110%
+  <span class="hljs-type">]</span><span class="hljs-keyword"> in </span>speed-up-in
+<span class="hljs-type">}</span>
+</code></pre>
+<p class="lh-copy measure mh-auto">
+            You may be wondering why variable and parameter names are using dashes instead of underscores.  We can all agree that delimiting words in names using camel-case results in a mess of unreadability, but underscores solve this nicely.  Underscores are somewhat difficult to type in a QWERTY layout, requiring both pinky fingers (or a pinky and a ring finger). This results in numerous typos.  Dashes are easier to execute, so we use that.  When subtracting values, you must surround the hyphen with spaces to disambiguate (this also makes the code more readable).
+</p>
+<p class="lh-copy measure mh-auto">
+            Next, let's see the definition of the language's syntax.  Note that there is significant semantic relevance to the language's constructs, for example, the syntax allows any variable to have a question mark at the end of its name, but this is only semantically allowed for booleans.
+</p>
+<a name="syntax"></a>
+          <h2 class="f4">Language Syntax Reference</h2>
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-attribute">&lt;flight plan&gt;</span>           ::= &lt;event handler&gt; | &lt;event handler&gt; &lt;flight plan&gt;
+<span class="hljs-attribute">&lt;event handler&gt;</span>         ::= on &lt;inline-space&gt; &lt;event name&gt; &lt;inline-space&gt; [ &lt;whitespace&gt; &lt;parameter list&gt; &lt;whitespace&gt; ] &lt;whitespace&gt; { &lt;whitespace&gt; &lt;code&gt; &lt;whitespace&gt; }
+<span class="hljs-attribute">&lt;inline-space&gt;</span>          ::= <span class="hljs-string">" "</span> | <span class="hljs-string">" "</span> &lt;inline-space&gt;
+<span class="hljs-attribute">&lt;optional-inline-space&gt;</span> ::= <span class="hljs-string">""</span> | &lt;inline-space&gt;
+<span class="hljs-attribute">&lt;whitespace&gt;</span>            ::= &lt;inline-space&gt; | &lt;newline&gt; | &lt;inline-space&gt; &lt;whitespace&gt; | &lt;newline&gt; &lt;whitespace&gt;
+<span class="hljs-attribute">&lt;event name&gt;</span>            ::= &lt;word&gt; | &lt;word&gt; <span class="hljs-string">" "</span> &lt;event name&gt;
+<span class="hljs-attribute">&lt;word&gt;</span>                  ::= <span class="hljs-string">""</span> | &lt;word&gt; &lt;letter&gt;
+<span class="hljs-attribute">&lt;letter&gt;</span>                ::= <span class="hljs-string">"a"</span> | <span class="hljs-string">"b"</span> | <span class="hljs-string">"c"</span> | <span class="hljs-string">"d"</span> | <span class="hljs-string">"e"</span> | <span class="hljs-string">"f"</span> | <span class="hljs-string">"g"</span> | <span class="hljs-string">"h"</span> | <span class="hljs-string">"i"</span> | <span class="hljs-string">"j"</span> | <span class="hljs-string">"k"</span> | <span class="hljs-string">"l"</span> | <span class="hljs-string">"m"</span> | <span class="hljs-string">"n"</span> | <span class="hljs-string">"o"</span> | <span class="hljs-string">"p"</span> | <span class="hljs-string">"q"</span> | <span class="hljs-string">"r"</span> | <span class="hljs-string">"s"</span> | <span class="hljs-string">"t"</span> | <span class="hljs-string">"u"</span> | <span class="hljs-string">"v"</span> | <span class="hljs-string">"w"</span> | <span class="hljs-string">"x"</span> | <span class="hljs-string">"y"</span> | <span class="hljs-string">"z"</span>
+<span class="hljs-attribute">&lt;code&gt;</span>                  ::= &lt;whitespace&gt; &lt;statement&gt; | &lt;whitespace&gt; &lt;statement&gt; &lt;newline&gt; &lt;code&gt;
+<span class="hljs-attribute">&lt;newline&gt;</span>               ::= <span class="hljs-string">"\n"</span>
+<span class="hljs-attribute">&lt;statement&gt;</span>             ::= &lt;variable assignment&gt; | &lt;variable reassignment&gt; | &lt;control structure&gt; | &lt;send event&gt; | <span class="hljs-string">"do nothing"</span>
+<span class="hljs-attribute">&lt;variable assignment&gt;</span>   ::= &lt;variable name&gt; &lt;inline-space&gt; <span class="hljs-string">"is"</span> &lt;inline-space&gt; &lt;expression&gt;
+<span class="hljs-attribute">&lt;variable reassignment&gt;</span> ::= &lt;variable name&gt; &lt;inline-space&gt; <span class="hljs-string">"is now"</span> &lt;inline-space&gt; &lt;expression&gt;
+<span class="hljs-attribute">&lt;control structure&gt;</span>     ::= <span class="hljs-string">"if"</span> &lt;inline-space&gt; &lt;variable&gt; &lt;inline-space&gt; <span class="hljs-string">"{"</span> &lt;newline&gt; &lt;code&gt; &lt;newline&gt; <span class="hljs-string">"}"</span> &lt;newline&gt; <span class="hljs-string">"else {"</span> &lt;newline&gt; &lt;code&gt; &lt;newline&gt; <span class="hljs-string">"}"</span>
+<span class="hljs-attribute">&lt;expression&gt;</span>            ::= &lt;variable-or-literal&gt; &lt;operator&gt; &lt;variable-or-literal&gt;
+<span class="hljs-attribute">&lt;variable-or-literal&gt;</span>   ::= &lt;variable&gt; | &lt;literal&gt;
+<span class="hljs-attribute">&lt;variable&gt;</span>              ::= &lt;word&gt; | &lt;word&gt; <span class="hljs-string">"-"</span> &lt;variable&gt;
+<span class="hljs-attribute">&lt;literal&gt;</span>               ::= &lt;non-whitespace&gt; | &lt;non-whitespace&gt; &lt;literal&gt;
+<span class="hljs-attribute">&lt;non-whitespace&gt;</span>        ::= «any non space symbol»
+<span class="hljs-attribute">&lt;send event&gt;</span>            ::= <span class="hljs-string">"send"</span> &lt;inline-whitespace&gt; &lt;event name&gt; &lt;inline-whitespace&gt; <span class="hljs-string">"["</span> &lt;inline-whitespace&gt; &lt;argument list&gt;  &lt;inline-whitespace&gt; <span class="hljs-string">"]"</span> &lt;scheduled time&gt;
+<span class="hljs-attribute">&lt;scheduled time&gt;</span>        ::= <span class="hljs-string">"now"</span> | <span class="hljs-string">"in"</span> &lt;inline-whitespace&gt; &lt;variable-or-literal&gt;
+<span class="hljs-attribute">&lt;parameter list&gt;</span>        ::= <span class="hljs-string">""</span> | &lt;parameter name&gt; <span class="hljs-string">":"</span> &lt;optional-inline-space&gt; &lt;parameter list&gt;
+<span class="hljs-attribute">&lt;argument list&gt;</span>         ::= <span class="hljs-string">""</span> | &lt;parameter name&gt; <span class="hljs-string">":"</span> &lt;parameter value&gt; &lt;optional-inline-space&gt; &lt;parameter value&gt;
+<span class="hljs-attribute">&lt;parameter name&gt;</span>        ::= &lt;word&gt; | &lt;word&gt; <span class="hljs-string">"-"</span> &lt;parameter name&gt;
+<span class="hljs-attribute">&lt;parameter value&gt;</span>       ::= &lt;variable-or-literal&gt;
+</code></pre>
+<a name="semantics"></a>
+          <h2 class="f4">Language Semantic Reference</h2>
+<p class="lh-copy measure mh-auto">
+            Referencing the tokens in the BNF above:
+</p>
+          <ul class="lh-copy">
+            <li class="mb2"><strong>&lt;literal&gt;</strong> must conform to a known literal format. See <a class="link underscore black" href="#types">Data Types</a> for more.</li>
+            <li class="mb2"><strong>&lt;scheduled time&gt;</strong> must be a <code>Time</code> value</li>
+            <li class="mb2"><strong>&lt;send event&gt;</strong> must reference a known event or one defined in the current flight plan.</li>
+            <li class="mb2"><strong>&lt;variable assignment&gt;</strong> (e.g. <code class="nowrap">direction is 45º</code>) may only occur when declaring a variable the first time in a scope</li>
+            <li class="mb2"><strong>&lt;variable reassignment&gt;</strong> (e.g. <code class="nowrap">direction is now 33º</code>) may not occur to declare a variable, but <em>must</em> occur after a variable has been declared with <code>is</code></li>
+            <li class="mb2"><strong>&lt;word&gt;</strong>, which is used in variable names, event names, argument names, and parameter names <em>must</em> be in the dictionary</li>
+          </ul>
+        </section>
+        <section class="measure mh-auto">
+          <a name="stdlib"></a>
+          <h1 class="f4 ttu tracked">Standard Library</h1>
+<p class="lh-copy measure mh-auto">
+            <span class="logomark">Timeline</span>'s standard library consists of events and types.  In most cases, events are designed to either be triggered by your code or handled by it, but not both.
+</p>
+          <a name="events"></a>
+          <h2 class="f4">Events</h2>
+          <h3 class="f5 pl2 tracked-tight underline">To Handle</h3>
+          <a name="events-start"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">start</h1>
+              <pre class="lh-copy"><code>[
+
+]</code></pre>
+            </div>
+            <p class="lh-copy">The first event triggered. This is where you should set up your trip details.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="events-collision-imminent"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">collision imminent</h1>
+              <pre class="lh-copy"><code>[
+  distance: <a href="#type-Time">Time</a>
+  position: <a href="#type-Angle">Angle</a>
+  dimensions: <a href="#type-Dimension">Dimension</a>
+]</code></pre>
+            </div>
+            <p class="lh-copy">Triggered if a ping detects an object ahead of the traveler, where a collision will happen in distance time.</p>
+<p class="lh-copy">The object is at position inside the vortex and a box of size dimensions would enclose the object.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="events-traveler-entered"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">traveler entered</h1>
+              <pre class="lh-copy"><code>[
+
+]</code></pre>
+            </div>
+            <p class="lh-copy">Triggered when the traveler enters the vortex and the trip begins.  Any distances-as-time would start when this is triggered. This is a good place to set up any pre-determined vortex adjustments, or to send pings.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="events-vortex-established"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">vortex established</h1>
+              <pre class="lh-copy"><code>[
+
+]</code></pre>
+            </div>
+            <p class="lh-copy">Triggered when the vortex has been successfully established. This can be used for setup after the connection has been made, however you are more likely to want to handle the traveler entered event, since that is triggered when the traveler actually enters.</p>
+<p class="lh-copy"></p>
+          </article>
+
+          <h3 class="f5 pl2 tracked-tight underline">To Trigger</h3>
+          <a name="events-adjust-vortex-direction"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">adjust vortex direction</h1>
+              <pre class="lh-copy"><code>[
+  direction: <a href="#type-Angle">Angle</a>
+]</code></pre>
+            </div>
+            <p class="lh-copy">Manipulates the vortex along the given direction.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="events-adjust-vortex-speed"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">adjust vortex speed</h1>
+              <pre class="lh-copy"><code>[
+  speed: <a href="#type-Percent">Percent</a>
+]</code></pre>
+            </div>
+            <p class="lh-copy">Manipulates the vortex to slow the traveler down, or speed it up, by the given percentage.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="events-ping"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">ping</h1>
+              <pre class="lh-copy"><code>[
+
+]</code></pre>
+            </div>
+            <p class="lh-copy">Send a ping ahead of the traveler. If anything is detected, various events will be triggered.  collision imminent is the most common.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="events-trip-details"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">trip details</h1>
+              <pre class="lh-copy"><code>[
+  destination: <a href="#type-Destination">Destination</a>
+  traveler: <a href="#type-Traveler">Traveler</a>
+]</code></pre>
+            </div>
+            <p class="lh-copy">Contains the details of your trip, including where to go, when to go, and the size of the traveler.  When this is handled by the Time-Space Manifold, it will trigger the vortex established event (unless a hardware problem prevents it).</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="types"></a>
+          <h2 class="f4">Data Types</h2>
+          <a name="type-Angle"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">Angle</h1>
+              <pre class="lh-copy"><code>[
+  degrees: <a href="#type-Integer">Integer</a>
+  minutes: <a href="#type-Integer">Integer</a>
+  seconds: <a href="#type-Integer">Integer</a>
+]</code></pre>
+            </div>
+            <h2 class="f5">Supported Literals</h2>
+<ul class="list"><li class="pl0"><code class="nowrap">%{degrees}º</code></li>
+<li class="pl0"><code class="nowrap">%{degrees}º%{minutes}'</code></li>
+<li class="pl0"><code class="nowrap">%{degrees}º%{minutes}'%{seconds}"</code></li></ul>
+            <h2 class="f5">Supported Operators</h2>
+<ul><li><code class="nowrap">Angle - Angle &rarr; Angle</code></li>
+<li><code class="nowrap">Angle + Angle &rarr; Angle</code></li></ul>
+            <p class="lh-copy">An angle in degrees</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="type-Destination"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">Destination</h1>
+              <pre class="lh-copy"><code>[
+  ascension: <a href="#type-Angle">Angle</a>
+  declination: <a href="#type-Angle">Angle</a>
+  distance: <a href="#type-Distance">Distance</a>
+  duration: <a href="#type-Time">Time</a>
+]</code></pre>
+            </div>
+            <h2 class="f5">No Literals</h2>
+<ul class="list"></ul>
+            <h2 class="f5">No Operators</h2>
+<ul></ul>
+            <p class="lh-copy">A destination in time and space—where you want to go.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="type-Dimension"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">Dimension</h1>
+              <pre class="lh-copy"><code>[
+  width: <a href="#type-Distance">Distance</a>
+  height: <a href="#type-Distance">Distance</a>
+  depth: <a href="#type-Distance">Distance</a>
+]</code></pre>
+            </div>
+            <h2 class="f5">No Literals</h2>
+<ul class="list"></ul>
+            <h2 class="f5">No Operators</h2>
+<ul></ul>
+            <p class="lh-copy">A cube that describes the outer-most dimensions of an object.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="type-Distance"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">Distance</h1>
+              <pre class="lh-copy"><code>[
+  kilometers: <a href="#type-Integer">Integer</a>
+]</code></pre>
+            </div>
+            <h2 class="f5">Supported Literals</h2>
+<ul class="list"><li class="pl0"><code class="nowrap">%{kilometers}km</code></li>
+<li class="pl0"><code class="nowrap">%{meters}m</code></li></ul>
+            <h2 class="f5">Supported Operators</h2>
+<ul><li><code class="nowrap">Distance + Distance &rarr; Distance</code></li>
+<li><code class="nowrap">Distance - Distance &rarr; Distance</code></li></ul>
+            <p class="lh-copy">A physical distance.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="type-Percent"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">Percent</h1>
+              <pre class="lh-copy"><code>[
+  percentage: <a href="#type-Integer">Integer</a>
+]</code></pre>
+            </div>
+            <h2 class="f5">Supported Literals</h2>
+<ul class="list"><li class="pl0"><code class="nowrap">%{percentage}%</code></li></ul>
+            <h2 class="f5">No Operators</h2>
+<ul></ul>
+            <p class="lh-copy">A percentage as a whole number, so e.g. 90% is 0.90.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="type-Time"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">Time</h1>
+              <pre class="lh-copy"><code>[
+  seconds: <a href="#type-Integer">Integer</a>
+]</code></pre>
+            </div>
+            <h2 class="f5">Supported Literals</h2>
+<ul class="list"><li class="pl0"><code class="nowrap">%{seconds}s</code></li></ul>
+            <h2 class="f5">No Operators</h2>
+<ul></ul>
+            <p class="lh-copy">An amount of time in seconds.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="type-Traveler"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">Traveler</h1>
+              <pre class="lh-copy"><code>[
+  weight: <a href="#type-Weight">Weight</a>
+  dimensions: <a href="#type-Dimension">Dimension</a>
+]</code></pre>
+            </div>
+            <h2 class="f5">No Literals</h2>
+<ul class="list"></ul>
+            <h2 class="f5">No Operators</h2>
+<ul></ul>
+            <p class="lh-copy">What is going to travel in time.  It has a weight and a cube that describes it's largest dimensions.</p>
+<p class="lh-copy"></p>
+          </article>
+          <a name="type-Weight"></a>
+          <article class="bg-near-white ph3 pb1 mb3">
+            <div class="pv3 bb b--gray">
+              <h1 class="f4 monospace mt0 pt0">Weight</h1>
+              <pre class="lh-copy"><code>[
+  kilograms: <a href="#type-Integer">Integer</a>
+]</code></pre>
+            </div>
+            <h2 class="f5">Supported Literals</h2>
+<ul class="list"><li class="pl0"><code class="nowrap">%{kilograms}kg</code></li></ul>
+            <h2 class="f5">No Operators</h2>
+<ul></ul>
+            <p class="lh-copy">A weight or mass</p>
+<p class="lh-copy"></p>
+          </article>
+        </section>
+        <section class="measure mh-auto">
+          <a name="simulator"></a>
+          <h1 class="f4 ttu tracked">Simulator</h1>
+        </section>
+      </section>
+    </main>
+    <footer class="tc bt bg-dark-gray light-yellow ma0 pa2 pb3 lh-copy">
+      <a name="about"></a>
+      <p>
+        <span>
+          Copyright &copy; 2019
+        </span>
+        <span>
+          by
+        </span>
+        <span class="nowrap">
+          David Bryant Copeland,
+        </span>
+        <span>
+          All Rights Reserved.
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

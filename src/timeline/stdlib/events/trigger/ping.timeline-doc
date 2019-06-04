@@ -1,0 +1,3 @@
+event ping takes [
+]
+Send a ping ahead of the traveler. If anything is detected, various events will be triggered.  collision imminent is the most common.

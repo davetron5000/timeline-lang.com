@@ -1,0 +1,11 @@
+type Angle contains [
+  degrees: Integer
+  minutes: Integer
+  seconds: Integer
+]
+typed literal %{degrees}º
+typed literal %{degrees}º%{minutes}'
+typed literal %{degrees}º%{minutes}'%{seconds}"
+operator - produces Angle
+operator + produces Angle
+An angle in degrees

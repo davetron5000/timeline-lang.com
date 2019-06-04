@@ -3,13 +3,19 @@ const path = require("path");
 const Handlebars = require("handlebars");
 const ifEqualsHelper = require("./helpers/if_equals.js");
 const codeSampleHelper = require("./helpers/code_sample.js");
+const eventDocHelper = require("./helpers/event_doc.js");
+const typeDocHelper = require("./helpers/type_doc.js");
 
 const handlebarsPath = path.join(__dirname, "..", "..", "handlebars");
 const partialsPath = path.join(handlebarsPath, "_partials");
 const htmlPath = path.join(__dirname, "..", "..", "html");
+const eventDocPath = path.join(__dirname, "..", "..", "timeline", "stdlib", "events" );
+const typeDocPath = path.join(__dirname, "..", "..", "timeline", "stdlib", "types" );
 
 Handlebars.registerHelper("if-equals", ifEqualsHelper());
 Handlebars.registerHelper("code-sample", codeSampleHelper(handlebarsPath));
+Handlebars.registerHelper("event-doc", eventDocHelper(eventDocPath));
+Handlebars.registerHelper("type-doc", typeDocHelper(typeDocPath));
 
 function log(string) {
   console.log(`[${__filename}]: ${string}`);

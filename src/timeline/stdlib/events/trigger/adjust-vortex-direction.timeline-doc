@@ -1,0 +1,4 @@
+event adjust vortex direction takes [
+  direction: Angle
+]
+Manipulates the vortex along the given direction.

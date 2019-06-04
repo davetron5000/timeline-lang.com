@@ -1,0 +1,7 @@
+event collision imminent takes [
+  distance:Time
+  position:Angle
+  dimensions:Dimension
+]
+Triggered if a ping detects an object ahead of the traveler, where a collision will happen in distance time.
+The object is at position inside the vortex and a box of size dimensions would enclose the object.

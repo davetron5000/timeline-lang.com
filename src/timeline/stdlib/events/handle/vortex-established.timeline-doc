@@ -1,0 +1,3 @@
+event vortex established takes [
+]
+Triggered when the vortex has been successfully established. This can be used for setup after the connection has been made, however you are more likely to want to handle the traveler entered event, since that is triggered when the traveler actually enters.

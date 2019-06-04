@@ -1,0 +1,5 @@
+type Weight contains [
+  kilograms: Integer
+]
+typed literal %{kilograms}kg
+A weight or mass
