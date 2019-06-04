@@ -3,7 +3,7 @@ const path = require ("path");
 const childProcess = require("child_process");
 
 
-const htmlPath = path.join(__dirname, "..", "..", "production");
+const htmlPath = path.join(__dirname, "..", "..", "..", "production");
 
 const htmlFiles = fs.readdirSync(htmlPath).filter( function(file) {
   const extension = path.extname(file);
