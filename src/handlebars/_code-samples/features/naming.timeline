@@ -1,10 +1,10 @@
 direction     is 45º
 opp-direction is 360º - direction
-<span class="red b">^^^
+^^^
 |
-|-- “opp” is not a word</span>
+|-- “opp” is not a word
 
 send mv up [] now
-     <span class="red b">^^
+     ^^
      |
      |-- “mv” is not a word

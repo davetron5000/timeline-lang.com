@@ -1,46 +1,61 @@
-var fs         = require("fs");
-var path       = require("path");
-var Handlebars = require("handlebars");
+const fs                 = require("fs");
+const path               = require("path");
+const Handlebars         = require("handlebars");
+const ifEqualsHelper     = require("./ifEquals-helper.js");
+const codeSampleHelper   = require("./codeSample-helper.js");
 
-var handlebarsPath = path.join(__dirname,"..","handlebars");
-var partialsPath   = path.join(handlebarsPath,"_partials");
-var htmlPath       = path.join(__dirname,"..","html");
-var htmlPath       = path.join(__dirname,"..","html");
+const handlebarsPath = path.join(__dirname,"..","handlebars");
+const partialsPath   = path.join(handlebarsPath,"_partials");
+const htmlPath       = path.join(__dirname,"..","html");
 
-var partials = fs.readdirSync(partialsPath);
+Handlebars.registerHelper("ifEquals", ifEqualsHelper());
+Handlebars.registerHelper("codeSample", codeSampleHelper(handlebarsPath) );
 
-Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
-  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-});
-
-Handlebars.registerHelper("codeSample", function(codeFilePath) {
-  var file = path.join(handlebarsPath,"_code-samples",codeFilePath)
-  var code = fs.readFileSync(file,"UTF-8");
-
-  return new Handlebars.SafeString(code);
-});
-
-for (var i = 0; i < partials.length; i++) {
-  var partial = partials[i];
-  if (path.extname(partial) === ".hbs") {
-
-    var hbs         = fs.readFileSync(path.join(partialsPath, partial) ,"UTF-8");
-    var partialName = path.basename(partial,".hbs");
-
-    Handlebars.registerPartial(partialName, hbs)
-  }
+function log(string) {
+  console.log(`[${__filename}]: ${string}`);
 }
 
-var files = fs.readdirSync(handlebarsPath);
-for (var i = 0; i < files.length; i++) {
-  var file = files[i];
-  if (path.extname(file) === ".hbs") {
+function isHandleBarsFile(filename) {
+  const extension = path.extname(filename);
+  return extension === ".hbs";
+}
 
-    var contents = fs.readFileSync(path.join(handlebarsPath,file), "UTF-8");
-    var template = Handlebars.compile(contents);
-    var html     = template({});
+const partials = fs.readdirSync(partialsPath);
+partials.forEach(function(partial) {
+  if (isHandleBarsFile(partial)) {
 
-    fs.writeFileSync(path.join(htmlPath,path.basename(file,".hbs") + ".html"), html);
+    const partialName     = path.basename(partial,".hbs");
+    const partialFilename = path.join(partialsPath, partial);
+    const partialSource   = fs.readFileSync(partialFilename ,"UTF-8");
+
+    log(`📝 Registering '${partialName}' from '${partial}'`);
+    Handlebars.registerPartial(partialName, partialSource);
+  }
+  else {
+    log(`⚠️ '${partial}' is not a Handlebars file`);
+  }
+});
+
+const templates = fs.readdirSync(handlebarsPath);
+templates.forEach(function(template) {
+  if (isHandleBarsFile(template)) {
+
+    const basename         = path.basename(template,".hbs");
+
+    const htmlFilename     = path.join(htmlPath,basename) + ".html";
+    const templateFilename = path.join(handlebarsPath,template);
+
+    const templateSource   = fs.readFileSync(templateFilename, "UTF-8");
+    const compiledTemplate = Handlebars.compile(templateSource);
+    const html             = compiledTemplate({});
+
+    log(`✅ Compiling '${template}' into '${htmlFilename}'`);
+
+    fs.writeFileSync(htmlFilename, html);
+  }
+  else {
+    log(`⚠️  '${template}' is not a Handlebars file`);
   }
 }
+);
 

@@ -85,9 +85,9 @@
     <h1 class="f4 lh-title mb0">No Functions or I/O—Only Events</h1>
   </div>
   <div class="fl w-100 w-50-ns">
-<pre class="bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>on vortex established [] {
-  send disconnect [] in 10ms
-}
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-keyword">on</span> vortex established <span class="hljs-type">[</span><span class="hljs-type">]</span> <span class="hljs-type">{</span>
+  <span class="hljs-keyword">send</span> disconnect <span class="hljs-type">[</span><span class="hljs-type">]</span> <span class="hljs-keyword">in</span> <span class="hljs-number">10ms</span>
+<span class="hljs-type">}</span>
 </code></pre>
   </div>
   <div class="fl w-100 w-50-ns">
@@ -101,24 +101,24 @@ All code is executed in response to a well-defined event.  While code can have l
     <h1 class="f4 lh-title mb0">Static Typing, Including Literals</h1>
   </div>
   <div class="fl w-100 w-50-ns">
-<pre class="bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>on startup [] {
-  send trip details [
-    destination: [
-      declination: 37º20'12"3
-      ascension: 12º2'25"12
-      distance: 1,345,980km
-      time: 19,234,123s
-    ],
-    traveler: [
-      weight: 98kg,
-      dimensions: [
-       width: 4m
-       height: 4m
-       depth: 1m
-      ]
-    ]
-  ] now
-}
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-keyword">on</span> startup <span class="hljs-type">[</span><span class="hljs-type">]</span> <span class="hljs-type">{</span>
+  <span class="hljs-keyword">send</span> trip details <span class="hljs-type">[</span>
+    <span class="hljs-name">destination:</span> <span class="hljs-type">[</span>
+      <span class="hljs-name">declination:</span> <span class="hljs-number">37º20'12"3</span>
+      <span class="hljs-name">ascension:</span> <span class="hljs-number">12º</span>
+      <span class="hljs-name">distance:</span> <span class="hljs-number">1,345,980km</span>
+      <span class="hljs-name">time:</span> <span class="hljs-number">19,234,123s</span>
+    <span class="hljs-type">]</span>,
+    <span class="hljs-name">traveler:</span> <span class="hljs-type">[</span>
+      <span class="hljs-name">weight:</span> <span class="hljs-number">98kg</span>,
+      <span class="hljs-name">dimensions:</span> <span class="hljs-type">[</span>
+       <span class="hljs-name">width:</span> <span class="hljs-number">4m</span>
+       <span class="hljs-name">height:</span> <span class="hljs-number">4m</span>
+       <span class="hljs-name">depth:</span> <span class="hljs-number">1m</span>
+      <span class="hljs-type">]</span>
+    <span class="hljs-type">]</span>
+  <span class="hljs-type">]</span> <span class="hljs-keyword">now</span>
+<span class="hljs-type">}</span>
 </code></pre>
   </div>
   <div class="fl w-100 w-50-ns">
@@ -132,21 +132,21 @@ The runtime knows—and will enforce—the types of everything.  The literal val
     <h1 class="f4 lh-title mb0">Minimal Density Per Line</h1>
   </div>
   <div class="fl w-100 w-50-ns">
-<pre class="bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>direction is 45º
-opposite-direction is 360º - direction
-offset is direction - opposite-direction + 5º
-          <span class="red">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-          |
-          |-- All expressions must be named</span>
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>direction <span class="hljs-keyword">is</span> <span class="hljs-number">45º</span>
+opposite-direction <span class="hljs-keyword">is</span> <span class="hljs-number">360º</span><span class="hljs-type"> - </span>direction
+offset <span class="hljs-keyword">is</span> direction<span class="hljs-type"> - </span>opposite-direction<span class="hljs-type"> + </span><span class="hljs-number">5º</span>
+          <span class="hljs-deletion">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="hljs-deletion">          |</span>
+<span class="hljs-deletion">          |-- All expressions must be named</span>
 
-if direction &gt; 50º {
-   <span class="red">^^^^^^^^^^^^^^^
-   |
-   |-- must be variable or literal</span>
-}
-else {
-  do nothing
-}
+<span class="hljs-keyword">if</span> direction<span class="hljs-type"> &lt; </span><span class="hljs-number">50º</span> <span class="hljs-type">{</span>
+   <span class="hljs-deletion">^^^^^^^^^^^^^^^</span>
+<span class="hljs-deletion">   |</span>
+<span class="hljs-deletion">   |-- must be variable or literal</span>
+<span class="hljs-type">}</span>
+<span class="hljs-keyword">else</span> <span class="hljs-type">{</span>
+  <span class="hljs-keyword">do nothing</span>
+<span class="hljs-type">}</span>
 </code></pre>
   </div>
   <div class="fl w-100 w-50-ns">
@@ -160,16 +160,16 @@ All expressions are <code>X «oper» Y</code> and cannot be nested or compound. 
     <h1 class="f4 lh-title mb0">Names Must Be Defined…in the Dictionary</h1>
   </div>
   <div class="fl w-100 w-50-ns">
-<pre class="bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>direction     is 45º
-opp-direction is 360º - direction
-<span class="red b">^^^
-|
-|-- “opp” is not a word</span>
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>direction     <span class="hljs-keyword">is</span> <span class="hljs-number">45º</span>
+opp-direction <span class="hljs-keyword">is</span> <span class="hljs-number">360º</span><span class="hljs-type"> - </span>direction
+<span class="hljs-deletion">^^^</span>
+<span class="hljs-deletion">|</span>
+<span class="hljs-deletion">|-- “opp” is not a word</span>
 
-send mv up [] now
-     <span class="red b">^^
-     |
-     |-- “mv” is not a word
+<span class="hljs-keyword">send</span> mv up <span class="hljs-type">[</span><span class="hljs-type">]</span> <span class="hljs-keyword">now</span>
+     <span class="hljs-deletion">^^</span>
+<span class="hljs-deletion">     |</span>
+<span class="hljs-deletion">     |-- “mv” is not a word</span>
 </code></pre>
   </div>
   <div class="fl w-100 w-50-ns">
@@ -183,14 +183,14 @@ All variables must either be dictionary words, or be dictionary words joined wit
     <h1 class="f4 lh-title mb0">There are No Unit Tests—Plans are Simulated</h1>
   </div>
   <div class="fl w-100 w-50-ns">
-<pre class="bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>> timeline plan.timeline
-<span class=" green">Success..............92.00%</span>
-<span class=" light-red">Failure..............08.00%
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code><span class="hljs-keyword">&gt; timeline plan.timeline</span>
+<span class="hljs-number">Success..............92.00%</span>
+<span class="hljs-deletion">Failure..............08.00%</span>
   Hardware failure..........02.23%
     Failed connection..............01.23%
-    <span class="red">Failed midstream...............01.00%
-  Small Object Collision....04.70%
-  Large Object Collision....01.07%
+    Failed midstream...............01.00%
+<span class="hljs-deletion">  Small Object Collision....04.70%</span>
+<span class="hljs-deletion">  Large Object Collision....01.07%</span>
 </code></pre>
   </div>
   <div class="fl w-100 w-50-ns">

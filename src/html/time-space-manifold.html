@@ -91,17 +91,17 @@
           This means that to avoid collision, we must route around this object.  For some objects whose position we know (such as the moon, or artificial satellites), we can pre-plan our trip to avoid them.  But space is filled with vast amounts of untracked objects.  There isn't enough time during the flight for a real person to avoid these objects.  Thus, we must create an automated flight plan that can react dynamically during the trip.
 </p>
         <div class="measure mh-auto">
-<pre class="bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>adjustment      is distance   - 2ms
-adjustment-back is adjustment + 4ms
-direction       is 360º       - position
+<pre class="hljs bg-near-black light-green pa2 ba br3 b--light-green lh-copy overflow-x-scroll"><code>adjustment      <span class="hljs-keyword">is</span> distance  <span class="hljs-type"> - </span><span class="hljs-number">2ms</span>
+adjustment-back <span class="hljs-keyword">is</span> adjustment<span class="hljs-type"> + </span><span class="hljs-number">4ms</span>
+direction       <span class="hljs-keyword">is</span> <span class="hljs-number">360º</span>      <span class="hljs-type"> - </span>position
 
-send adjust vortex direction [
-  direction:direction
-] in adjustment
+<span class="hljs-keyword">send</span> adjust vortex direction <span class="hljs-type">[</span>
+  <span class="hljs-name">direction:</span>direction
+<span class="hljs-type">]</span> <span class="hljs-keyword">in</span> adjustment
 
-send adjust vortex direction [
-  direction:direction
-] in adjustment-back
+<span class="hljs-keyword">send</span> adjust vortex direction <span class="hljs-type">[</span>
+  <span class="hljs-name">direction:</span>direction
+<span class="hljs-type">]</span> <span class="hljs-keyword">in</span> adjustment-back
 </code></pre>
         </div>
 <p class="lh-copy measure mh-auto">
