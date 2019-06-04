@@ -9,8 +9,22 @@ const typeDocHelper = require("./helpers/type_doc.js");
 const handlebarsPath = path.join(__dirname, "..", "..", "handlebars");
 const partialsPath = path.join(handlebarsPath, "_partials");
 const htmlPath = path.join(__dirname, "..", "..", "html");
-const eventDocPath = path.join(__dirname, "..", "..", "timeline", "stdlib", "events" );
-const typeDocPath = path.join(__dirname, "..", "..", "timeline", "stdlib", "types" );
+const eventDocPath = path.join(
+  __dirname,
+  "..",
+  "..",
+  "timeline",
+  "stdlib",
+  "events"
+);
+const typeDocPath = path.join(
+  __dirname,
+  "..",
+  "..",
+  "timeline",
+  "stdlib",
+  "types"
+);
 
 Handlebars.registerHelper("if-equals", ifEqualsHelper());
 Handlebars.registerHelper("code-sample", codeSampleHelper(handlebarsPath));
