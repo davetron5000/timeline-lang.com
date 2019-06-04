@@ -17,7 +17,7 @@ module.exports = function(hljs) {
         relevance: 0,
         variants: [
           { begin: /\b[0-9,]+km/ },
-          { begin: /\b[0-9,]+s/  },
+          { begin: /\b[0-9,]+s/ },
           { begin: /\b[0-9,]+kg/ },
           { begin: /\b[0-9,]+ms/ },
           { begin: /\b[0-9,]+m/ }
@@ -25,7 +25,7 @@ module.exports = function(hljs) {
       },
       {
         className: "name",
-        begin: "\\b([a-z\-]+:)",
+        begin: "\\b([a-z-]+:)",
         relevance: 10
       },
       {
@@ -50,11 +50,8 @@ module.exports = function(hljs) {
       {
         className: "type",
         relevance: 0,
-        variants: [
-          { begin: /[\[\]]/ },
-          { begin: /[\{\}]/ }
-        ]
+        variants: [{ begin: /[\[\]]/ }, { begin: /[\{\}]/ }]
       }
     ]
   };
-}
+};

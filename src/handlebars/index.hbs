@@ -30,7 +30,7 @@
             </p>
           </div>
         </article>
-        <section class="ph3">
+        <article class="ph3">
           <h3 class="tc f2">Features</h3>
 {{#> feature title="No Functions or I/O—Only Events" code="features/send-disconnect.timeline"}}
 All code is executed in response to a well-defined event.  While code can have logic and computation, it's only means of interacting outside of itself is to send events.  Above we tell the Time-Space Manifold to disconnect its vortex 10ms after it's been established.
@@ -47,7 +47,17 @@ All variables must either be dictionary words, or be dictionary words joined wit
 {{#> feature title="There are No Unit Tests—Plans are Simulated" code="features/simulation.simulation"}}
 Writing code—and checking if it will work—is done through a Monte Carlo simulation. Based on our understanding of the universe and the objects within it, <span class="logomark">Timeline</span> will give you a risk assessment of your flight plan.  You write code only to address a known risk.  When the risk has been reduced enough that the trip is worth it…take the trip.
 {{/feature}}
-      </section>
+        </article>
+        <article class="bg-light-yellow dark-gray pv3">
+          <div class="ph5 tc">
+            <h2 class="f2 mb0">Learn More</h2>
+            <ul class="list">
+              <li><a class="link f4 underline lh-copy black" href="/time-space-manifold.html">How does time travel work?</a></li>
+              <li><a class="link f4 underline lh-copy black" href="/docs.html"><span class="logomark">Timeline</span> language docs</a></li>
+              <li><a class="link f4 underline lh-copy black" href="/about.html">About <span class="logomark">Timeline</span></a></li>
+            </ul>
+          </div>
+        </article>
     </main>
     {{> footer }}
   </body>

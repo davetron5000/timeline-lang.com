@@ -13,6 +13,7 @@
     "highlight.js": "^9.15.8",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.7.0",
+    "prettier": "1.17.1",
     "sharp": "^0.22.1",
     "tachyons": "^4.11.1",
     "webpack": "^4.32.2",
@@ -24,6 +25,7 @@
     "webpack_args": " --config webpack.config.js --display-error-details"
   },
   "scripts": {
+    "fmt": "prettier --no-color --write 'src/js/**/*.js'",
     "build": "node src/js/server/compile-html.js",
     "serve": "yarn build && $(yarn bin)/webpack-dev-server --open",
     "webpack": "yarn build && webpack $npm_package_config_webpack_args",
