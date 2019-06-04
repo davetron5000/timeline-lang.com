@@ -32,7 +32,7 @@
     "webpack:production": "yarn build && webpack $npm_package_config_webpack_args --env=production",
     "clean": "rm -rf dev production",
     "upload": "aws s3 sync --cache-control=\"max-age=3600\" --profile=personal production/ s3://timeline-lang.com",
-    "invalidate": "aws cloudfront create-invalidation --profile=personal --distribution-id=EV4FW9FKK2YHL --paths=/index.html",
+    "invalidate": "node src/js/server/invalidate-cloudfront.js",
     "deploy": "yarn clean && yarn webpack:production && yarn upload && yarn invalidate"
   }
 }
