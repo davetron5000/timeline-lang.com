@@ -1,0 +1,4 @@
+type Integer contains [
+]
+typed literal %{value} example 123,456,789
+Any integer. Generally you won't use this on its own, but use a type literal or a constructor.

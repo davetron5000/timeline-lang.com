@@ -3,9 +3,9 @@ type Angle contains [
   minutes: Integer
   seconds: Integer
 ]
-typed literal %{degrees}º
-typed literal %{degrees}º%{minutes}'
-typed literal %{degrees}º%{minutes}'%{seconds}"
+typed literal %{degrees}º example 45º
+typed literal %{degrees}º%{minutes}' example 45º12'
+typed literal %{degrees}º%{minutes}'%{seconds}" example 45º12'34"
 operator - produces Angle
 operator + produces Angle
 An angle in degrees

@@ -1,5 +1,5 @@
 type Percent contains [
   percentage: Integer
 ]
-typed literal %{percentage}%
+typed literal %{percentage}% example 34%
 A percentage as a whole number, so e.g. 90% is 0.90.

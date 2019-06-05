@@ -5,7 +5,7 @@
     {{> social-metadata }}
   </head>
   <body>
-    {{> header page="About" }}
+    {{> header page="Docs" }}
     <main class="mt0 bg-future-blue near-black">
       <section class="pv4 ph6-ns ph4">
         <h1 class="f3 tc">Docs</h1>
@@ -114,7 +114,7 @@
             <li class="mb2"><strong>&lt;word&gt;</strong>, which is used in variable names, event names, argument names, and parameter names <em>must</em> be in the dictionary</li>
           </ul>
         </section>
-        <section class="measure mh-auto">
+        <section class="measure-wide mh-auto">
           <a name="stdlib"></a>
           <h1 class="f4 ttu tracked">Standard Library</h1>
           {{#> p-copy }}
@@ -122,29 +122,43 @@
           {{/p-copy }}
           <a name="events"></a>
           <h2 class="f4">Events</h2>
-          <h3 class="f5 pl2 tracked-tight underline">To Handle</h3>
+          {{#> p-copy }}
+          Events are the lifeblood of your flight plan, and all your code revolves around responding to events (or <em>handling</em> them), or sending events (or <em>triggering</em>).
+          {{/p-copy }}
+          <h3 class="f5 tracked-tight underline">To Handle</h3>
+          {{#> p-copy }}
+          These are events <em>you</em> respond to in your flight plan.  You would typically not fire these events.  Future versions of <span class="logomark">Timeline</span> may prevent you from doing so.
+          {{/p-copy }}
           {{ event-doc "handle/start" }}
           {{ event-doc "handle/collision-imminent" }}
           {{ event-doc "handle/traveler-entered" }}
           {{ event-doc "handle/vortex-established" }}
 
-          <h3 class="f5 pl2 tracked-tight underline">To Trigger</h3>
+          <h3 class="f5 tracked-tight underline">To Trigger</h3>
+          {{#> p-copy }}
+          These are events you trigger to affect the outcome of your flight plan.  You should not write handlers for them.  Future versions of <span class="logomark">Timeline</span> may prevent you from doing so.
+          {{/p-copy }}
           {{ event-doc "trigger/adjust-vortex-direction" }}
           {{ event-doc "trigger/adjust-vortex-speed" }}
           {{ event-doc "trigger/ping" }}
           {{ event-doc "trigger/trip-details" }}
+
           <a name="types"></a>
           <h2 class="f4">Data Types</h2>
+          {{#> p-copy }}
+          These are the data types provided by the language runtime.  Currently you cannot create your own data types, so these are somewhat magical.
+          {{/p-copy }}
           {{ type-doc "angle" }}
           {{ type-doc "destination" }}
           {{ type-doc "dimension" }}
           {{ type-doc "distance" }}
+          {{ type-doc "integer" }}
           {{ type-doc "percent" }}
           {{ type-doc "time" }}
           {{ type-doc "traveler" }}
           {{ type-doc "weight" }}
         </section>
-        <section class="measure mh-auto">
+        <section class="measure-wide mh-auto">
           <a name="simulator"></a>
           <h1 class="f4 ttu tracked">Simulator</h1>
         </section>

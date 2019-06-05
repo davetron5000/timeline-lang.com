@@ -1,5 +1,5 @@
 type Weight contains [
   kilograms: Integer
 ]
-typed literal %{kilograms}kg
+typed literal %{kilograms}kg example 12kg
 A weight or mass

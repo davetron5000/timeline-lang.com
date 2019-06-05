@@ -39,7 +39,7 @@ module.exports = function(typeDocPath) {
         }
         params.push({ name: paramMatchResult[1], type: paramMatchResult[2] });
       } else {
-        const literalMatchResult = line.match(/^typed literal (.*)$/);
+        const literalMatchResult = line.match(/^typed literal (.*) example (.*)$/);
         if (literalMatchResult === null) {
           const operatorMatchResult = line.match(
             /^operator (.) produces (.*)$/
@@ -53,7 +53,7 @@ module.exports = function(typeDocPath) {
             });
           }
         } else {
-          literals.push(literalMatchResult[1]);
+          literals.push({ literal: literalMatchResult[1], example: literalMatchResult[2] });
         }
       }
     });
@@ -80,7 +80,7 @@ module.exports = function(typeDocPath) {
       '<ul class="list">' +
       literals
         .map(function(literal) {
-          return `<li class="pl0"><code class="nowrap">${literal}</code></li>`;
+          return `<li class="pl0"><code class="nowrap">${literal.literal}</code> e.g. <code class="nowrap">${literal.example}</code></li>`;
         })
         .join("\n") +
       "</ul>";

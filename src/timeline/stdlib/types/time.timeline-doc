@@ -1,5 +1,5 @@
 type Time contains [
-  seconds: Integer
+  milliseconds: Integer
 ]
-typed literal %{seconds}s
+typed literal %{milliseconds}ms example 150ms
 An amount of time in seconds.
