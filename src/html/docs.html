@@ -538,73 +538,84 @@
 <p class="lh-copy"></p>
           </article>
         </section>
-        <section class="mh-auto">
-          <div class="measure-wide mh-auto">
-            <a name="simulator"></a>
-            <h1 class="f4 ttu tracked">Simulator</h1>
+        <section class="measure-wide mh-auto">
+          <a name="simulator"></a>
+          <h1 class="f4 ttu tracked">Simulator</h1>
 <p class="lh-copy measure mh-auto">
-            The simulator is where you spend most of your time.  The simulator will run a Monte Carlo simulation on your flight plan and tell you the risks involved in taking the trip, based on the plan.
+          The simulator is where you spend most of your time.  The simulator will run a Monte Carlo simulation on your flight plan and tell you the risks involved in taking the trip, based on the plan.
 </p>
-          </div>
           <pre class="overflow-x-scroll bg-black near-white ba br4 b--green pa4">&gt; timeline --help
+
 SYNOPSIS
-  timeline [opts] &lt;timeline file&gt;
+  timeline [--black-box-for=&lt;failure mode&gt;] \
+           [--details=&lt;failure mode&gt;] \
+           [--seed=&lt;seed value&gt;] \
+           &lt;timeline file&gt;
 
 DESCRIPTION
 
-  Simulate the execution of a flight plan.  Your typical workflow will
-  be to simulate your plan, examine the risks output by this
-  simulator and then either write code to mitigate those risks (and
-  repeat), or to accept the risks and take the trip, or to abandon
-  the trip altogether.
+  Simulate the execution of a flight plan.  Your
+  typical workflow will be to simulate your plan,
+  examine the risks output by this simulator and
+  then either write code to mitigate those risks
+  (and repeat), or to accept the risks and take
+  the trip, or to abandon the trip altogether.
 
-  This is called "Risk Driven Development" or RDD and is the primary
-  way in which Timeline code is written
+  This is called "Risk Driven Development" or
+  RDD and is the primary way in which Timeline
+  code is written
 
 OPTIONS
 
   &lt;timeline file&gt;
-      The file containing your flight plan.
+    The file containing your flight plan.
 
   --black-box-for=&lt;failure mode&gt;
 
     Re-run the simulation, producing a black box
-    for a sample run in which &lt;failure mode&gt; occurred.
-    This can be helpful for diagnosing very specific
-    failures and mitigating risks too specific for a summary.
+    for a sample run in which &lt;failure mode&gt;
+    occurred.  This can be helpful for diagnosing
+    very specific failures and mitigating risks
+    too specific for a summary.
 
-    Often, the use of --details will suggest this option
-    as details are only limited to broader failures.
+    Often, the use of --details will suggest this
+    option as details are only limited to broader
+    failures.
 
   --details=&lt;failure mode&gt;
     Re-run the simulation showing more details
-    about the given &lt;failure mode&gt;. This is useful
-    if you want to see more ways in which a failure
-    mode manifests itself to mitigate more specific
-    risks.  Often used with --seed to recreate a previous
-    run
+    about the given &lt;failure mode&gt;.
+    This is useful if you want to see more ways
+    in which a failure mode manifests itself to
+    mitigate more specific risks.  Often used
+    with --seed to recreate a previous run
 
   --seed=&lt;seed value&gt;
-      Re-use &lt;seed value&gt; for the random seed to recreate exactly 
-      a previous simulated run
+     Re-use &lt;seed value&gt; for the random
+     seed to recreate exactly a previous
+     simulated run.
 
 EXAMPLES
 
    o Run a flight plan
 
-      $ timeline plan.timeline
+     $ timeline plan.timeline
 
    o Re-Run a flight plan
 
-      $ timeline --seed=9474837473738 plan.timeline
+     $ timeline --seed=9474837473738 plan.timeline
 
-   o Figure out what known object you are colliding with
+   o Figure out what known object you are
+     colliding with
 
-      $ timeline --details="Known Object Collision" plan.timeline
+     $ timeline --details="Known Object Collision" \
+         plan.timeline
 
    o Get a black box for radioactive interference
 
-      $ timeline --black-box-for="Radioactive Interference" plan.timeline
+     $ timeline \
+         --black-box-for="Radioactive Interference" \
+         plan.timeline
           </pre>
         </section>
       </section>
