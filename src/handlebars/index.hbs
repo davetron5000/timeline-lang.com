@@ -36,7 +36,7 @@
 All code is executed in response to a well-defined event.  While code can have logic and computation, it's only means of interacting outside of itself is to send events.  Above we tell the Time-Space Manifold to disconnect its vortex 10ms after it's been established.
 {{/feature}}
 {{#> feature title="Static Typing, Including Literals" code="features/typed-literals.timeline"}}
-The runtime knows—and will enforce—the types of everything.  The literal values above are typed.  There is rarely a need for primitive/untyped vlues like raw integers.  The compiler understands that <code>37º20'12"3</code> is an <code>Angle</code> of 37 degrees, 20 hours, 12 minutes, and 3 seconds, and will construct the requisite data type.  Further, `destination` is a `Destination`, which is created by the values inside the brackets.  Lastly, large numeric values must have commas for readability.
+The runtime knows—and will enforce—the types of everything.  The literal values above are typed.  There is rarely a need for primitive/untyped vlues like raw integers.  The compiler understands that <code>37°20'12"3</code> is an <code>Angle</code> of 37 degrees, 20 hours, 12 minutes, and 3 seconds, and will construct the requisite data type.  Further, `destination` is a `Destination`, which is created by the values inside the brackets.  Lastly, large numeric values must have commas for readability.
 {{/feature}}
 {{#> feature title="Minimal Density Per Line" code="features/density.timeline"}}
 All expressions are <code>X «oper» Y</code> and cannot be nested or compound.  They cannot be used in control structures.  This means that every expression must have a name—the variable to which it is assigned.

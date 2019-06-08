@@ -6,7 +6,7 @@ on collision imminent [
   buffer          is 2ms
   adjustment      is distance   - buffer
   adjustment-back is adjustment + 4ms
-  direction       is 360º       - position
+  direction       is 360°       - position
 
   too-close?      is distance < 10ms
 

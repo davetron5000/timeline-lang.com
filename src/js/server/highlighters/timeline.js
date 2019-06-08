@@ -6,10 +6,10 @@ module.exports = function(hljs) {
         className: "number",
         relevance: 0,
         variants: [
-          { begin: /\b[0-9]+º[0-9]+\'[0-9]+\"[0-9]+/ },
-          { begin: /\b[0-9]+º[0-9]+\'[0-9]+\"/ },
-          { begin: /\b[0-9]+º[0-9]+\'/ },
-          { begin: /\b[0-9]+º/ }
+          { begin: /\b[0-9]+°[0-9]+\'[0-9]+\"[0-9]+/ },
+          { begin: /\b[0-9]+°[0-9]+\'[0-9]+\"/ },
+          { begin: /\b[0-9]+°[0-9]+\'/ },
+          { begin: /\b[0-9]+°/ }
         ]
       },
       {

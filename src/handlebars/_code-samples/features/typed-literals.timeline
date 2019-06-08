@@ -1,8 +1,8 @@
 on startup [] {
   send trip details [
     destination: [
-      declination: 37º20'12"3
-      ascension: 12º
+      declination: 37°20'12"3
+      ascension: 12°
       distance: 1,345,980km
       time: 19,234,123s
     ],

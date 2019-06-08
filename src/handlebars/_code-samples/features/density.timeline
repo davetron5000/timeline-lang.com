@@ -1,11 +1,11 @@
-direction is 45º
-opposite-direction is 360º - direction
-offset is direction - opposite-direction + 5º
+direction is 45°
+opposite-direction is 360° - direction
+offset is direction - opposite-direction + 5°
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
           |
           |-- All expressions must be named
 
-if direction < 50º {
+if direction < 50° {
    ^^^^^^^^^^^^^^^
    |
    |-- must be variable or literal

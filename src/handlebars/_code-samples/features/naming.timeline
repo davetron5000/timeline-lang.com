@@ -1,5 +1,5 @@
-direction     is 45º
-opp-direction is 360º - direction
+direction     is 45°
+opp-direction is 360° - direction
 ^^^
 |
 |-- “opp” is not a word

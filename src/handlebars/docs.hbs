@@ -72,7 +72,7 @@
             You can consult the documentation for the types of the parameters (there's no need for your code to re-state what they are), but to save you time, <code>distance</code> is a <code>Time</code>, <code>position</code> is an <code>Angle</code>, and <code>dimensions</code> is a <code>Dimension</code>.
           {{/p-copy }}
           {{#> p-copy }}
-            As we look more into this code, we can see a variable assignment.  The variable <code>buffer</code> is given the value <code>2ms</code>, which is a <code>Time</code>.  The assignment happens via the <code>is</code> keyword.  The equals sign (<code>=</code>) used in many languages is somewhat confusing, especially when dealing with math. In math, “<code>=</code>” represents equality, not assignment.  Some languages create operators like <code>:=</code> to allay this confusion, or even use arrows, e.g. <code>direction &larr; 45º</code>, but we prefer the succinct and unambiguous <code>is</code>.  There can be no clearer way to state that the value of <code>buffer</code> is 2ms than how we have designed it.
+            As we look more into this code, we can see a variable assignment.  The variable <code>buffer</code> is given the value <code>2ms</code>, which is a <code>Time</code>.  The assignment happens via the <code>is</code> keyword.  The equals sign (<code>=</code>) used in many languages is somewhat confusing, especially when dealing with math. In math, “<code>=</code>” represents equality, not assignment.  Some languages create operators like <code>:=</code> to allay this confusion, or even use arrows, e.g. <code>direction &larr; 45°</code>, but we prefer the succinct and unambiguous <code>is</code>.  There can be no clearer way to state that the value of <code>buffer</code> is 2ms than how we have designed it.
           {{/p-copy }}
           {{#> p-copy }}
             Lastly, you'll notice the expressions in use.  We assign <code>adjustment</code> to the result of subtracting <code>buffer</code> from <code>distance</code>.  Since both <code>buffer</code> and <code>distance</code> are <code>Time</code>s, and subtraction is defined on <code>Time</code> to produce a <code>Time</code>, the compiler (and us!) knows that <code>adjustment</code> is of type <code>Time</code>.  There's no need to restate this information in the  code.
@@ -109,8 +109,8 @@
             <li class="mb2"><strong>&lt;literal&gt;</strong> must conform to a known literal format. See <a class="link underscore black" href="#types">Data Types</a> for more.</li>
             <li class="mb2"><strong>&lt;scheduled time&gt;</strong> must be a <code>Time</code> value</li>
             <li class="mb2"><strong>&lt;send event&gt;</strong> must reference a known event or one defined in the current flight plan.</li>
-            <li class="mb2"><strong>&lt;variable assignment&gt;</strong> (e.g. <code class="nowrap">direction is 45º</code>) may only occur when declaring a variable the first time in a scope</li>
-            <li class="mb2"><strong>&lt;variable reassignment&gt;</strong> (e.g. <code class="nowrap">direction is now 33º</code>) may not occur to declare a variable, but <em>must</em> occur after a variable has been declared with <code>is</code></li>
+            <li class="mb2"><strong>&lt;variable assignment&gt;</strong> (e.g. <code class="nowrap">direction is 45°</code>) may only occur when declaring a variable the first time in a scope</li>
+            <li class="mb2"><strong>&lt;variable reassignment&gt;</strong> (e.g. <code class="nowrap">direction is now 33°</code>) may not occur to declare a variable, but <em>must</em> occur after a variable has been declared with <code>is</code></li>
             <li class="mb2"><strong>&lt;word&gt;</strong>, which is used in variable names, event names, argument names, and parameter names <em>must</em> be in the dictionary</li>
           </ul>
         </section>
